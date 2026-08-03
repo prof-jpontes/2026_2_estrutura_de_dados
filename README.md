@@ -1,62 +1,191 @@
-# Unidade Temática #1 - Revisão e Fundamentos
+# 💻 Disciplina: Estrutura de Dados
 
-
-Senhores estudantes,
-
-Sejam bem-vindos à disciplina de Estrutura de Dados, ministrada no curso superior de tecnologia em Sistemas para Internet do Ifac/Campus Rio Branco. Eu sou o professor Jonas Pontes e estarei convosco nesse componente curricular.
-
-## 📑 Sumário
-
-- [Iniciar](#️-iniciar)
-- [Estrutura Sequencial](#estrutura-sequencial)
-  - [1. Introdução à Sintaxe C](#1-introdução-à-sintaxe-c) 
-  - [2. Entrada e Saída](#2-entrada-e-saída)
-  - [3. Operadores Aritméticos](#3-operadores-aritméticos)
-  - [4. Casting de Dados](#4-casting-de-dados)
-  - [5. Exercícios de Fixação](#-5-exercícios-de-fixação)
-
-
->> 📅 Sexta-feira, 3/8/2026 
-
-## ▶️ Iniciar
-
-Vamos iniciar fazendo um pequeno diagóstico. Para isso, acesse o juiz online [Beecrowd](https://judge.beecrowd.com) e complete o seu cadastro. Ato contínuo, acesse a disciplina Estrutura de Dados, de ID XXXX (a chave de acesso será dada pelo professor em sala de aula). Dentro da disciplina, acesse a lista de exercícios **Diagóstico**. Faça essa lista. 
-
-Procederemos com a revisão acompanada de discussão e correção dos desafios.
-
->> 📅 Quarta-feira, 5/8/2026 
-
-**Se necessário, proceda da seguinte forma:**
-> *Faça o download do GCC* — 🔗 [MinGW](https://sourceforge.net/projects/mingw/);
-
-> *Instale o compilador e faça a configuração das variáveis do ambiente*;
-
-```plaintext
-1. Clique com o botão direito em "Este Computador" e vá em "Propriedades";
-2. Clique em "Configurações Avançadas do Sistema";
-3. Clique em "Variáveis de Ambiente".
-4. Abra a variável Path e acrescente o caminho "C:\MinGW\bin" (ou o equivalente).
-8. Clique em OK.
-```
-
-> *Faça o download do [Visual Studio Code](https://code.visualstudio.com/download) e instale-o*.
-
-#### Você tem um ambiente de desenvolvimento configurado 
-
-## 👩🏻‍💻 Primeiro programa em C
+Este repositório reúne os conteúdos, exemplos e projetos desenvolvidos na disciplina **Estrutura de Dados**, parte do curso de graduação em **Sistemas para Internet** oferecido pelo **Instituto Federal do Acre -- Campus Rio Branco**, no 2º período.
 
 ---
-> *Crie um arquivo com a extensão .c com o nome hello_word e coloque este conteúdo:*
-```c
-#include <stdio.h>
 
-int main(){
-    printf("Hello world\n");
-    return 0;
-}
-```
-> Experimente mudar o conteúdo da mensagem
+## 🏛️ Informações Gerais
 
-> Agora vamos estudar a anatomia desse programa em C, ou seja, o que cada parte representa.
+- **Curso:** Sistemas para Internet
+- **Instituição:** Instituto Federal do Acre — Ifac  
+  🔗 Site: [https://www.ifac.edu.br/](https://www.ifac.edu.br/)  
+- **Período letivo:** [2o. semestre de 2026]
+
 ---
- 
+
+## Informações do Professor: 
+- **Nome:** Jonas Pontes;
+- **Lattes:** [Link de acesso](http://lattes.cnpq.br/3068708429112735);
+- **Google Scholar:** [Jonas Pontes](https://scholar.google.com.br/citations?user=MPXPcRsAAAAJ&hl=pt-BR&oi=ao);
+- **Currículo:**
+  - Bacharel em Sistemas de Informação pela Universidade Federal do Acre (Ufac) em 2013;
+  - Especialista em Tecnologias da Informação e Comunicação pela Ufac em 2015;
+  - Mestre em Ciência da Computação pelo Centro de Informática da Universidade Federal de Pernambuco (CIn/UFPE) em 2017;
+  - Vice-líder do Grupo de Informática para Pesquisa em Computação do Instituto Federal do Acre (Ifac).
+
+## 📚 Ementa da Disciplina
+
+> *Métodos de ordenação e busca; Tipos abstratos de dados; Alocação estática e dinâmica de memória; Listas encadeadas; Pilhas; Filas; Árvores de busca; Introdução a grafos.*
+
+
+---
+
+## 🎯 Objetivo Geral
+
+> Compreender os conceitos fundamentais de estruturas de dados e desenvolver habilidades para especificar, implementar e analisar diferentes tipos de estruturas e algoritmos associados, com ênfase na resolução de problemas computacionais.
+
+## 🎯 Objetivos Específicos
+
+1. Aplicar técnicas de ordenação e busca eficientes no contexto das estruturas de dados;
+2. Compreender o conceito de tipo abstrato de dado (TAD) e sua importância na modelagem de estruturas de dados;
+3. Implementar e manipular listas encadeadas, pilhas e filas, explorando alocação estática e dinâmica de memória;
+4. Desenvolver e aplicar algoritmos de árvores de busca binária para organização e recuperação eficiente de informações;
+5. Introduzir conceitos fundamentais de grafos e suas aplicações em problemas computacionais;
+6. Relacionar a escolha de estruturas de dados com a solução de problemas práticos, considerando eficiência e escalabilidade;
+
+---
+
+## 📚 Unidades Temáticas
+
+### Unidade Temática 1: Revisão e Fundamentos
+- Diagnóstico da turma;
+- Revisão de lógica de programação e algoritmos em linguagem C;
+- Recursividade;
+- Ponteiros
+- Estruturas de dados homogêneas: vetores e matrizes.
+> Carga horária: 18 aulas.
+
+### Unidade Temática 2: Métodos de Ordenação e Busca
+- Algoritmos de ordenação: Bubble Sort, Selection Sort, Insertion Sort e Merge Sort;
+- Busca sequencial e busca binária;
+- Eficiência dos métodos de ordenação e busca.
+> Carga horária: 15 aulas.
+
+### Unidade Temática 3: Tipos Abstratos de Dados (TADs), Registros e Alocação de Memória
+- TAD: definição, interface e implementação;
+- Estrutura de dados heterogêneas;
+- Declaração, acesso e manipulação de `structs`;
+- `Struct` como base para organização e modelagem de TADs;
+- Alocação estática e dinâmica de memória.
+> Carga horária: 21 aulas.
+
+### Unidade Temática 4: Listas
+- Listas simplesmente encadeadas;
+- Listas duplamente encadeadas;
+- Listas circulares;
+- Operações: implementação, inserção, remoção e consulta.
+> Carga horária: 12 aulas.
+
+### Unidade Temática 5: Filas e Pilhas
+- Filas estáticas;
+- Filas dinâmicas;
+- Pilhas estáticas;
+- Pilhas dinâmicas;
+- Operações com filas e pilhas.
+> Carga horária: 12 aulas.
+
+### Unidade Temática 6: Árvores de Busca
+- Conceitos de árvores: nós, níveis, altura, percurso;
+- Árvores binárias de busca: inserção, remoção e busca;
+- Balanceamento básico: introdução a AVL;
+- Aplicações práticas de árvores.
+> Carga horária: 15 aulas.
+
+### Unidade Temática 7: Introdução a Grafos
+- Conceitos básicos de grafos: vértices, arestas, grau, caminhos;
+- Representação de grafos: listas de adjacência e matrizes;
+- Algoritmos de busca em profundidade e busca em largura;
+- Aplicações de grafos em problemas computacionais.
+> Carga horária: 15 aulas.
+
+### Resumo
+| Unidade | Tema                                                       | Diretório                       |
+|---------|------------------------------------------------------------|---------------------------------|
+|   01    | Revisão e Fundamentos                                      |[unidade-01-revisão-e-fundamentos](unidade-01-revisao-e-fundamentos)|
+|   02    | Métodos de Ordenação e Busca                               | |
+|   03    | Tipos Abstratos de Dados (TADs)                            | |
+|   04    | Listas                                                     | |
+|   05    | Filas e Pilhas                                             | |
+|   06    | Árvores de Busca                                           | |
+|   07    | Grafos                                                     | |
+
+---
+
+
+## 📝 Metodologia
+
+> *i. Exposição de conteúdos, com interação e reflexões em grupos, promovendo o entendimento conceitual das estruturas de dados e algoritmos*;
+
+> *ii. Pesquisas realizadas dentro e fora da sala de aula, incentivando o aprofundamento teórico e a busca de aplicações práticas em diferentes contextos*;
+
+> *iii. Resolução de tarefas, individual e/ou em grupos, envolvendo a implementação de algoritmos e estruturas em linguagem C*;
+
+> *iv. Discussão e resolução de situações-problemas, aplicando diferentes estruturas de dados para solução de desafios computacionais*;
+
+> *v. Desenvolvimento de projetos práticos que integrem múltiplas estruturas de dados, de modo a consolidar o aprendizado por meio de experimentação e prática*.
+
+---
+
+## 🖥️ Recursos Tecnológicos
+> *Laboratório de Informática*;
+
+> *Linguagem de programação C* — 🔗 [MingGW/GCC](https://sourceforge.net/projects/mingw/);
+
+> *Ambiente para escrita de código* — 🔗 [VS Code](https://code.visualstudio.com/download);
+
+> *GitHub* — 🔗 [Repositório da disciplina](https://github.com/prof-jpontes/2026_2_estrutura_de_dados);
+
+> *Suap* — 🔗 [Suap/Ifac](https://suap.ifac.edu.br);
+
+> *Beecrownd* — 🔗 [Link de acesso](https://judge.beecrowd.com);  
+
+> *Biblioteca* — 🔗 [Biblioteca Ifac](https://biblioteca.ifac.edu.br/).
+
+---
+
+
+## 📝 Avaliação
+
+> *Primeira etapa: uma lista de exercícios e duas provas*;
+
+> *Segunda etapa: uma lista de exercícios, uma prova e um projeto*.
+
+**A nota de cada etapa será obtida por meio de média aritmética**.
+
+---
+
+## 📚 Bibliografia
+
+### Básica:
+
+PREISS, B. R. **Estruturas de dados e algoritmos**. 20. ed. Rio de Janeiro: Elsevier, 2001. 584 p. 
+
+GUIMARÃES, A. M.; LAGES, N. A. C. **Algoritmos e estruturas de dados**. 1. ed. Rio de Janeiro: LTC, 1994. 232 p.
+
+ASCENCIO, A. F. G. **Estrutura de Dados**: algoritmos, análise da complexidade e implementações em JAVA e C/C++. 1. ed. São Paulo: Pearson, 2011. 448 p. 
+
+### Complementar:
+
+TANENBAUM, A. et al. **Estruturas de dados usando C**. 1. ed. São Paulo: Pearson, 1995. 912 p. 
+
+CORMEN, T. H. et al. **Algoritmos**: teoria e prática. 3. ed. Rio de Janeiro: Campus, 2012. 944 p. 
+
+SZWARCFITER, J. L.; MARKENZON, L. **Estruturas de dados e seus algoritmos**. 3. ed. Rio de Janeiro: LTC, 2010. 318 p. 
+
+TOSCANI, L. V. **Complexidade de algoritmos**. 3. ed. Porto Alegre: Bookman, 2012. 280 p. 13 v. 
+
+EDELWEISS, N.; GALANTE, R. **Estrutura de dados**. 1. ed. Porto Alegre: Bookman, 2009. 262 p. 18 v.
+
+---
+
+## 📅 Cronograma
+
+<img width="1851" height="1259" alt="Imagem1" src="https://github.com/user-attachments/assets/fd0e7f8c-c4f9-4a17-8f0f-f04b46e3b8dc" />
+
+---
+
+## 📂 Organização do Repositório
+
+Cada unidade da disciplina está em sua própria pasta, com todos os materiais usados na aula, inclusive as implementações realizadas.
+
+A estrutura do diretório está definida por unidade temática. Cada unidade é uma pasta, que por sua vez contém os projetos e um arquivo de orientação, com um roteiro de estudos.
