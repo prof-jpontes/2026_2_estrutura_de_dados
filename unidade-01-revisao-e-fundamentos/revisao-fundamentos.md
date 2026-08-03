@@ -16,7 +16,7 @@ Sejam bem-vindos à disciplina de Estrutura de Dados, ministrada no curso superi
   - [5. Exercícios de Fixação](#-5-exercícios-de-fixação)
 
 
->> 📅 Sexta-feira, 3/8/2026 
+>> 📅 Segunda-feira, 3/8/2026 
 
 ## ▶️ Iniciar
 
