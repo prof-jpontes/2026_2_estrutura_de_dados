@@ -142,6 +142,8 @@ As funções para entradas e saídas precisam de um código que indica o tipo de
 
 ---
 
+>> 📅 Quarta-feira, 12/8/2026 
+
 ### 3. Operadores Aritméticos
 
 **🎯 Objetivo:**  
