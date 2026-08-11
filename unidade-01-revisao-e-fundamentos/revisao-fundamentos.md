@@ -399,11 +399,14 @@ Problema **Divisão do Tesouro (OBI)**:
   [https://olimpiada.ic.unicamp.br/pratique/pj/2020/f1/tesouro/](https://olimpiada.ic.unicamp.br/pratique/pj/2020/f1/tesouro/).
 
 **Exercício 09**
+
 Problema **Piso da escola (OBI)**:  
   [https://olimpiada.ic.unicamp.br/pratique/p2/2018/f1/piso/](https://olimpiada.ic.unicamp.br/pratique/p2/2018/f1/piso/).
 
 **Exercício 10**
-Problema **Acelerador de partículas**: [https://olimpiada.ic.unicamp.br/pratique/p2/2020/f1/acelerador/](https://olimpiada.ic.unicamp.br/pratique/p2/2020/f1/acelerador/).
+
+Problema **Acelerador de partículas**: 
+  [https://olimpiada.ic.unicamp.br/pratique/p2/2020/f1/acelerador/](https://olimpiada.ic.unicamp.br/pratique/p2/2020/f1/acelerador/).
 
 ---
 
