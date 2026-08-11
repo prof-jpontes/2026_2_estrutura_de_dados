@@ -160,6 +160,7 @@ Apresentar os operadores aritméticos básicos da linguagem C e como utilizá-lo
 | `%`      | Módulo (resto)    | `5 % 2`              | `1`       |
 
 > ⚠️ A divisão entre inteiros retorna apenas a parte inteira do resultado.
+
 > ℹ️ Quando deseja-se o resultado real, é necessário que o dividendo ou o divisor seja real.
 
 
@@ -226,7 +227,7 @@ printf("%.1f"numeroDecimal); // Saída: 10.0
 | `char` | `int` | Implícita | `int x = 'A';` | `65` (ASCII) |
 | `int` | `char` | Explícita | `char c = (char) 65;` | `'A'` |
 | `float` | `int` | Explícita | `int x = (int) 10.8;` | `10` — parte decimal descartada |
-| `double` | `int` | Explícita | `int x = (int) 10.99;` | `10` |
+| `double` | `int` | Explícita | `int x = (int) 10.99;` | `10` — parte decimal descartada |
 | `double` | `float` | Explícita | `float x = (float) 10.5;` | `10.5f` — possível perda de precisão |
 | `int` | `short` | Explícita | `short x = (short) 1000;` | `1000`, se couber no tipo |
 | `long` | `int` | Explícita | `int x = (int) 100000L;` | `100000`, se couber |
@@ -235,7 +236,7 @@ printf("%.1f"numeroDecimal); // Saída: 10.0
 | `char` | `float` | Implícita | `float x = 'A';` | `65.0` |
 | `int` | `float` | Explícita | `float x = (float) 10;` | `10.0f` |
 
-Casting implícitos são automáticos, sem a necessidade do programador fazê-lo, como no exemplo acima. 
+Casting implícitos são automáticos, sem a necessidade do programador fazê-lo, como nos exemplos acima. 
 
 
 #### Conversão Explícita (Casting Manual)
@@ -258,3 +259,356 @@ Em casting explícito, um valor não é arredondado; ele é "truncado".
 > ⚠️ *Atenção:* Ao converter de double para int, a parte fracionária é perdida!
 
 ---
+
+### 📝 5. Exercícios de Fixação
+
+> Exercícios sobre estrutura sequencial: entrada, processamento e saída.
+
+**Exercício 00**
+  
+Escrever um programa que mostre o nome de uma pessoa e sua idade em 31 de dezembro de um determinado ano. Para isso, leia o nome da pessoa, seu ano de nascimento e o ano para o qual deseje calcular a idade.
+
+**Exercício 01**
+
+Desenvolver um programa que peça a base e altura de um triângulo e calcula a sua área.
+
+
+**Exercício 02**
+
+Faça um programa para ler dois valores inteiros, e depois mostrar na tela a soma desses números com uma mensagem explicativa, conforme exemplos.
+
+Exemplos:
+
+*Entrada:*
+```
+10  
+30
+```
+
+*Saída:*
+```
+SOMA = 40
+```
+
+**Exercício 03**
+
+Faça um programa para ler o valor do raio de um círculo, e depois mostrar o valor da área deste círculo com **quatro casas decimais** conforme exemplos.
+
+Fórmula da área:** `area = π * raio²`  
+
+Considere:** `π = 3.14159`
+
+Exemplo:
+
+*Entrada:*
+```
+2.00
+```
+
+*Saída:*
+```
+A=12.5664
+```
+
+**Exercício 04**
+
+Fazer um programa para ler quatro valores inteiros A, B, C e D. A seguir, calcule e mostre a diferença do produto de A e B pelo produto de C e D segundo a fórmula:  
+`DIFERENCA = (A * B - C * D)`
+
+Exemplo:
+
+*Entrada:*
+```
+5  
+6  
+7  
+8
+```
+
+*Saída:*
+```
+DIFERENCA = -26
+```
+
+**Exercício 05**
+
+Fazer um programa que leia o número de um funcionário, seu número de horas trabalhadas, o valor que recebe por hora e calcule o salário desse funcionário. A seguir, mostre o número e o salário do funcionário, com **duas casas decimais**.
+
+Exemplo:
+
+*Entrada:*
+```
+25  
+100  
+5.50
+```
+
+*Saída:*
+```
+NUMBER = 25  
+SALARY = U$ 550.00
+```
+
+**Exercício 06**
+
+Fazer um programa para ler o código de uma peça 1, o número de peças 1, o valor unitário de cada peça 1, o código de uma peça 2, o número de peças 2 e o valor unitário de cada peça 2. Calcule e mostre o valor a ser pago.
+
+Exemplo:
+
+*Entrada:*
+```
+12 1 5.30  
+16 2 5.10
+```
+
+*Saída:*
+```
+VALOR A PAGAR: R$ 15.50
+```
+
+
+**Exercício 07**
+
+Fazer um programa que leia três valores com ponto flutuante de dupla precisão: `A`, `B` e `C`. Em seguida, calcule e mostre:
+
+- a) a área do triângulo retângulo que tem A por base e C por altura.
+- b) a área do círculo de raio C. (π = 3.14159)
+- c) a área do trapézio que tem A e B por bases e C por altura.
+- d) a área do quadrado que tem lado B.
+- e) a área do retângulo que tem lados A e B.
+
+Exemplo:
+
+*Entrada:*
+```
+3.0 4.0 5.2
+```
+
+*Saída:*
+```
+TRIANGULO: 7.800  
+CIRCULO: 84.949  
+TRAPEZIO: 18.200  
+QUADRADO: 16.000  
+RETANGULO: 12.000
+```
+
+**Exercício 08**
+
+Problema **Divisão do Tesouro (OBI)**:  
+  [https://olimpiada.ic.unicamp.br/pratique/pj/2020/f1/tesouro/](https://olimpiada.ic.unicamp.br/pratique/pj/2020/f1/tesouro/).
+
+**Exercício 09**
+Problema **Piso da escola (OBI)**:  
+  [https://olimpiada.ic.unicamp.br/pratique/p2/2018/f1/piso/](https://olimpiada.ic.unicamp.br/pratique/p2/2018/f1/piso/).
+
+**Exercício 10**
+Problema **Acelerador de partículas**: [https://olimpiada.ic.unicamp.br/pratique/p2/2020/f1/acelerador/](https://olimpiada.ic.unicamp.br/pratique/p2/2020/f1/acelerador/).
+
+---
+
+## 🔀 Desvios Condicionais
+
+**🎯 Objetivo:**
+Apresentar as estruturas de decisão, permitindo que o programa tome diferentes caminhos com base em condições lógicas.
+
+
+### 🧱 1. Estrutura do `if`, `else if` e `else`
+
+```c
+if (condição) {
+    // bloco executado se condição for verdadeira
+} else if (outraCondição) {
+    // bloco executado se a outraCondição for verdadeira
+} else {
+    // bloco executado se nenhuma das condições for verdadeira
+}
+```
+#### Exemplo
+
+```c
+int idade = 18;
+
+if (idade < 18) {
+    printf("Menor de idade\n");
+} else if (idade == 18) {
+    printf("Tem exatamente 18 anos\n");
+} else {
+    printf("Maior de idade\\n");
+}
+```
+
+
+#### 🔁 Encadeamento de condições
+
+> É possível encadear várias condições usando os **operadores lógicos**:
+
+- && (E lógico)
+
+- || (OU lógico)
+
+- ! (NÃO lógico)
+
+```c
+if (idade >= 18 && idade < 60) {
+    printf("Adulto não idoso\n");
+}
+```
+
+---
+
+### 📦 2. Estrutura switch
+
+Boa alternativa ao if-else quando temos várias comparações simples com o mesmo valor. É necessário que o resultado da comparação não seja um intervalo, mas sim em um valor específico. 
+
+### Exemplo
+```c
+int dia = 3;
+
+switch (dia) {
+    case 1:
+        printf("Domingo\n");
+        break;
+    case 2:
+        printf("Segunda-feira\n");
+        break;
+    case 3:
+        printf("Terça-feira\n");
+        break;
+    case 4:
+        printf("Quarta-feira\n");
+        break;
+    case 5:
+        printf("Quinta-feira\n");
+        break;
+    case 6:
+        printf("Sexta-feira\n");
+        break;
+    case 7:
+        printf("Sábado-feira\n");
+        break;
+    default:
+        printf("Dia inválido\n");
+}
+```
+
+---
+
+### 📝 3. Exercícios de Fixação
+
+- Criar um programa que recebe três notas, calcula a média e imprime:
+
+  - "Aprovado" se média ≥ 7,
+
+  - "Recuperação" se média entre 5 e 7,
+
+  - "Reprovado" caso contrário.
+
+- Problema **A idade de Dona Mônica**: [https://olimpiada.ic.unicamp.br/pratique/pj/2019/f1/idade/](https://olimpiada.ic.unicamp.br/pratique/pj/2019/f1/idade/).
+
+ ---
+
+ ## 🔁 Laços de Repetição
+
+ **🎯 Objetivo:**
+Apresentar as estruturas de repetição em C: `while`, `do/while` e `for`, explicando sua sintaxe, funcionamento e diferenças, com exemplos práticos.
+
+---
+
+### 🔄 1. Laço `for`
+
+O laço for é usado quando sabemos exatamente quantas vezes queremos repetir algo. É muito comum para contagens e percursos em sequências.
+
+#### Sintaxe:
+```c
+for (inicialização; condição; atualização) {
+    // bloco de código
+}
+```
+
+#### Exemplo
+
+```c
+int contador;
+for (int contador = 1; contador <= 5; contador++) {
+    printf("Contando: " + contador);
+}
+```
+>> 📌 Útil para quando o número de repetições é conhecido de antemão.
+
+#### Prática
+> Escrever um programa em C que mostre os números pares entre 0 e 100.
+> Modifique o programa anterior para interromper a execução quando encontrar um número múltiplo de 19.
+> Modifique o programa para mostrar os números pares, desde que não sejam múltiplos de 7. 
+
+
+---
+
+### 🔄 2. Laço `while`
+
+O laço `while` executa um bloco de código **enquanto** uma condição for verdadeira. A **verificação ocorre antes da execução**.
+
+#### Sintaxe:
+```c
+while (condição) {
+    // bloco de código
+}
+```
+
+#### Exemplo
+
+```c
+int contador = 1;
+
+while (contador <= 5) {
+    printf("Contando: " + contador);
+    contador++;
+}
+```
+>> 📌 O bloco será executado enquanto contador <= 5 for verdadeiro.
+
+>> 🛑 Se a condição for falsa no início, o laço não será executado nenhuma vez.
+
+#### Prática
+> Escreva um programa em C que leia uma quantidade indeterminada pesos de bois de uma fazenda. Quando for lido o valor 0 (zero), a leitura deve ser encerrada e os valores do boi mais pesado, mais leve e a média de massa dos dois devem ser apresentados.
+
+---
+
+### 🔁 3. Laço do/while
+
+O laço do/while executa o bloco de código pelo menos uma vez, e verifica a condição depois. 
+
+#### Sintaxe:
+```c
+do{
+  //bloco de código
+}while (condição);
+```
+
+#### Exemplo
+
+```c
+int contador = 1;
+do{
+  printf("Contando: " + contador);
+  contador++;
+} while(contador <=5);
+```
+>> ✅ O laço sempre executa ao menos uma vez, mesmo que a condição seja falsa logo após a primeira execução.
+
+#### Prática
+> Escrever um programa em C que leia uma quantidade indefinida de números inteiros. Para cada número lido, indicar o dia da semana correspondente, se houver. Senão, indicar isso através de uma mensagem de valor inválido. Caso o usuário digite 0, a aplicação será encerrada. Usar o labelled loop. 
+
+---
+
+### 📝 4. Exercícios Práticos
+- Imprimir os números de 1 a 10 usando while, do/while e for.
+
+- Ler um número inteiro `n` e imprimir todos os números pares de 1 até `n`.
+
+- Criar um programa que peça ao usuário para digitar senhas até que a senha correta seja informada.
+
+- Fazer um programa que leia 5 números inteiros e calcule a média deles usando um laço.
+
+---
+
