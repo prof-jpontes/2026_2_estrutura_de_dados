@@ -1,0 +1,29 @@
+# Binários e executáveis
+*.out
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Objetos de compilação
+*.o
+*.obj
+
+# Bibliotecas e arquivos de archive
+*.a
+*.lib
+
+# Arquivos de depuração e símbolos
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Pastas de build comuns
+build/
+bin/
+obj/
+
+# Arquivos do Sistema Operacional
+.DS_Store
+Thumbs.db

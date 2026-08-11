@@ -1,10 +1,11 @@
 #include <stdio.h>
 
 int main(){
-    printf("Tamanho do tipo char: %zu\n", sizeof(char));
-    printf("Tamanho do tipo int: %zu\n", sizeof(int));
-    printf("Tamanho do tipo long long: %zu\n", sizeof(long long));
-    printf("Tamanho do tipo float: %zu\n", sizeof(float));
-    printf("Tamanho do tipo double: %zu\n", sizeof(double));
+    printf("Tamanho dos dados, em bytes, separados por tipo\n");
+    printf("Char: %zu\n", sizeof(char));
+    printf("Int: %zu\n", sizeof(int));
+    printf("Long long: %zu\n", sizeof(long long));
+    printf("Float: %zu\n", sizeof(float));
+    printf("Double: %zu\n", sizeof(double));
     return 0;
 }
