@@ -405,7 +405,7 @@ Problema **Piso da escola (OBI)**:
 
 **Exercício 10**
 
-Problema **Acelerador de partículas**: 
+Problema **Acelerador de partículas (OBI)**: 
   [https://olimpiada.ic.unicamp.br/pratique/p2/2020/f1/acelerador/](https://olimpiada.ic.unicamp.br/pratique/p2/2020/f1/acelerador/).
 
 ---
