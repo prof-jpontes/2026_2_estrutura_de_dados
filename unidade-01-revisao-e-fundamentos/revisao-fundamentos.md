@@ -411,6 +411,8 @@ Problema **Acelerador de partículas (OBI)**:
 
 ---
 
+>> 📅 Segunda-feira, 17/8/2026 
+
 ## 🔀 Desvios Condicionais
 
 **🎯 Objetivo:**
@@ -615,4 +617,3 @@ do{
 - Fazer um programa que leia 5 números inteiros e calcule a média deles usando um laço.
 
 ---
-
