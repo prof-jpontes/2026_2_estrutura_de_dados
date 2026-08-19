@@ -59,14 +59,14 @@ int main(){
 Façamos um pequeno diagóstico. Para isso, acesse o juiz online [Beecrowd](https://judge.beecrowd.com) e complete o seu cadastro. Ato contínuo, acesse a disciplina Estrutura de Dados, de ID 016082 (a chave de acesso será dada pelo professor em sala de aula). Dentro da disciplina, acesse a lista de exercícios **Diagóstico**, ID 162198. Faça essa lista. 
 
 Caso não seja possível se inscrever na lista, resolva diretamente na plataforma os seguintes problemas: 
- - [1002	Área do Círculo](https://judge.beecrowd.com/pt/problems/view/1002);
- - [1004	Produto Simples](https://judge.beecrowd.com/pt/problems/view/1004);
- - [1013	O Maior](https://judge.beecrowd.com/pt/problems/view/1013);
- - [1014	Consumo](https://judge.beecrowd.com/pt/problems/view/1014);
- - [1019	Conversão de Tempo](https://judge.beecrowd.com/pt/problems/view/1019);
- - [1024	Criptografia](https://judge.beecrowd.com/pt/problems/view/1024);
- - [1168	LED](https://judge.beecrowd.com/pt/problems/view/1168);
- - [1238	Combinador](https://judge.beecrowd.com/pt/problems/view/1238).
+ - [1002    Área do Círculo](https://judge.beecrowd.com/pt/problems/view/1002);
+ - [1004    Produto Simples](https://judge.beecrowd.com/pt/problems/view/1004);
+ - [1013    O Maior](https://judge.beecrowd.com/pt/problems/view/1013);
+ - [1014    Consumo](https://judge.beecrowd.com/pt/problems/view/1014);
+ - [1019    Conversão de Tempo](https://judge.beecrowd.com/pt/problems/view/1019);
+ - [1024    Criptografia](https://judge.beecrowd.com/pt/problems/view/1024);
+ - [1168    LED](https://judge.beecrowd.com/pt/problems/view/1168);
+ - [1238    Combinador](https://judge.beecrowd.com/pt/problems/view/1238).
 
 > Após a resolução o término, responda ao formulário de consolidação do diagnóstico, disponível [neste formulário](https://forms.gle/qK7wnaHjJsnibMdWA).
 
@@ -617,3 +617,296 @@ do{
 - Fazer um programa que leia 5 números inteiros e calcule a média deles usando um laço.
 
 ---
+
+>> 📅 Quarta-feira, 19/8/2026 
+
+## 🔁 Estruturas de dados homogêneas — vetores e matrizes
+
+### 1. Arranjos  
+
+Um **arranjo** é uma variável estruturada formada por agrupamentos de variáveis do **mesmo tipo** (por exemplo: inteiro, caractere, número de ponto flutuante).  
+Por isso, são também chamados de **estruturas de dados homogêneas**.
+
+Uma estrutura é identificada por **um único nome**, e cada uma das variáveis que a compõem é identificada por um **índice**, que indica sua posição no agrupamento.  
+Por usarem índices, essas estruturas também são chamadas de **estruturas indexadas**.
+
+---
+
+### 🔢 Índices e acesso aos elementos  
+
+Usamos números inteiros para representar os índices, geralmente iniciando em **0** (0, 1, 2, 3, 4, ...).  
+
+É importante notar que **não existe vinculação direta** entre a variável usada como índice e o arranjo em si.  
+Por exemplo, podemos usar uma variável `i` para percorrer o arranjo e, em outro momento, usar outra variável qualquer para acessar suas posições.
+
+📌 O essencial é que a variável usada como índice **assuma valores numéricos compatíveis** com os índices válidos do arranjo.
+
+---
+
+### ⚙️ Acesso direto aos elementos  
+
+Uma característica importante das estruturas indexadas é que **o acesso aos elementos não precisa ser sequencial**.  
+Ou seja, é possível acessar diretamente qualquer posição do arranjo sem precisar passar pelas anteriores.  
+
+> Exemplo: para acessar o terceiro elemento de um arranjo, não é necessário acessar o primeiro e o segundo antes.
+
+---
+
+### 🧠 Operações sobre os elementos  
+
+Cada posição de um arranjo pode ser entendida como **uma variável simples** — daquelas que já aprendemos a declarar, ler, atribuir valores, usar em expressões e exibir na tela.  
+
+Assim, todas as operações que fazemos com variáveis simples também podem ser realizadas com **os elementos de um arranjo**.
+
+---
+
+### 💡 Quando usar arranjos?
+
+Arranjos são usados sempre que precisamos **armazenar grande quantidade de valores do mesmo tipo** em um programa.  
+Essa quantidade, muitas vezes, **não é conhecida pelo programador**, mas sim definida pelo **usuário**.
+
+📘 **Exemplos práticos:**  
+Imagine uma adaptação ao problema apresentado anterior, que trata de um programa que calcula as massas dos bois de uma fazenda. Nessa adaptação, assuma que será necessário guardar a massa de cada. Nesse caso, certamente o programa usará uma **estrutura indexada** para armazenar esses valores.  
+Cada animal será representado por um **índice** dentro dessa estrutura.
+
+📗 **Outro exemplo:**  
+Em uma sala de aula com 40 alunos, podemos criar um arranjo chamado `aluno` para armazenar os **nomes de todos os estudantes**.  
+Cada nome estará associado a um **índice** desse arranjo.
+
+---
+
+### 🧮 Tipos de arranjos  
+
+Um arranjo pode ser:  
+- **Unidimensional**, quando utiliza **apenas um índice** (também chamado de **vetor**).  
+- **Multidimensional**, quando utiliza **dois ou mais índices** (chamado de **matriz**).
+
+> 🧩 Este material contempla o estudo de arranjos de **até duas dimensões**.  
+
+
+### 2. Declaração de vetores
+
+**🎯 Objetivo:**
+Apresentar a sintaxe de declaração de vetores em C e as diferentes formas de definir seu tamanho e seus valores iniciais.
+
+#### Sintaxe geral
+
+Um vetor é declarado escrevendo o **tipo** dos dados que ele vai armazenar, o **nome** e o **tamanho** entre colchetes, finalizando com `;`.
+
+```c
+tipo nome[tamanho];
+```
+
+```c
+int arr[1000];
+double lista[100];
+char letras[tam];
+float dinheiro[10*x];
+```
+
+> ℹ️ O tamanho pode ser um valor constante, uma variável já definida ou até uma expressão aritmética.
+
+#### Formas de declaração
+
+**a) Tamanho definido pelo programador**
+```c
+int arr[1000];
+```
+
+**b) Tamanho definido pelo usuário**
+```c
+int arr[n]; // é preciso que o valor de n já tenha sido definido (ex.: lido do usuário)
+```
+
+**c) Tamanho explícito e todos os valores definidos pelo programador**
+```c
+int arr[10] = {18, 17, 20, 26, 32, 29, 15, 12, 16, 21};
+```
+
+**d) Tamanho implícito (o compilador conta os valores) e todos os valores definidos pelo programador**
+```c
+int arr[] = {18, 17, 20, 26, 32, 29, 15};
+```
+
+**e) Tamanho implícito e valores definidos pelo usuário**
+```c
+int arr[] = {a, b, c, d}; // a, b, c e d são valores lidos anteriormente do usuário
+```
+
+**f) Tamanho explícito e apenas alguns valores definidos pelo programador**
+```c
+int arr[10] = {18, 17}; // as demais posições recebem 0 automaticamente
+```
+
+> ⚠️ Ao declarar um vetor com tamanho implícito, é **obrigatório** informar a lista de valores entre chaves — é a partir dela que o compilador calcula o tamanho.
+
+---
+
+### 3. Atribuição e leitura de elementos
+
+**🎯 Objetivo:**
+Mostrar como atribuir, ler e exibir valores em posições específicas de um vetor, usando o índice.
+
+Cada posição do vetor é acessada pelo **nome** seguido do **índice** entre colchetes:
+
+```c
+arr[0] = 10;            // atribuição direta
+scanf("%d", &arr[i]);   // leitura de um valor digitado pelo usuário
+printf("%d", arr[i]);   // exibição do valor armazenado
+```
+
+Como normalmente não sabemos, ao escrever o código, todos os valores que serão armazenados, é comum atribuir ou ler elementos **dentro de um laço de repetição**:
+
+```c
+int notas[40];
+
+for (int i = 0; i < 40; i++) {
+    printf("Digite a nota do aluno %d: ", i + 1);
+    scanf("%f", &notas[i]);
+}
+```
+
+> 📌 O laço `for` é o mais utilizado ao trabalhar com vetores, pois já controla naturalmente o índice de 0 até o tamanho do vetor.
+
+---
+
+### 4. Manipulação de elementos do vetor
+
+Todas as operações possíveis com uma **variável simples** — atribuição, leitura, exibição, operações aritméticas ou lógicas — também podem ser realizadas com um **elemento de vetor**, bastando referenciá-lo pelo nome e pelo índice.
+
+```c
+soma = soma + notas[i];     // usar um elemento em uma expressão
+if (notas[i] >= 7) { ... }  // usar um elemento em uma condição
+```
+
+#### Prática
+> Declare um vetor de 10 posições, preencha-o com valores lidos do usuário e, em seguida, exiba todos os valores na ordem inversa.
+
+> Declare um vetor de 20 números inteiros, leia os valores e calcule a soma e a média deles.
+
+> Leia 10 números inteiros em um vetor e exiba apenas os valores pares.
+
+---
+
+### 5. Matrizes — conceito
+
+Estruturas indexadas que necessitam de **mais de um índice** para identificar um de seus elementos são chamadas de **matrizes de dimensão n**, sendo `n` o número de índices necessários.
+
+Uma **matriz de dimensão 2** (a mais comum) exige, portanto, **dois índices** para identificar um elemento: um para a **linha** e outro para a **coluna**.
+
+> 📘 Exemplo: em uma matriz `matr`, o elemento localizado na linha de índice 1 e coluna de índice 2 é acessado por `matr[1][2]`.
+
+---
+
+### 6. Declaração de matrizes
+
+**🎯 Objetivo:**
+Apresentar a sintaxe de declaração de matrizes (arranjos bidimensionais) em C.
+
+#### Sintaxe geral
+
+Uma matriz é declarada escrevendo o tipo dos dados que ela vai armazenar, o nome e sua dimensão bidimensional, entre colchetes.
+
+```c
+tipo nome[linhas][colunas];
+```
+
+```c
+int ma[1000][10];
+double lista[100][5];
+char letras[tam][20];
+float dinheiro[10*x][x];
+```
+
+#### Formas de declaração
+
+**a) Dimensões definidas pelo programador**
+```c
+int ma[1000][10];
+```
+
+**b) Dimensões definidas pelo usuário**
+```c
+int ma[n][n]; // é preciso que o valor de n já tenha sido definido pelo usuário
+```
+
+**c) Dimensões explícitas e todos os valores definidos pelo programador**
+```c
+int ma[2][5] = {{18, 17, 20, 26, 32}, {29, 15, 12, 16, 21}};
+```
+
+**d) Dimensões implícitas (nas linhas) e todos os valores definidos pelo programador**
+```c
+int ma[][3] = {{18, 17, 20}, {4, 5, 8}, {26, 32, 29}};
+```
+
+**e) Dimensões explícitas e apenas alguns valores definidos pelo programador**
+```c
+int ma[10][10] = {{18, 17}}; // as demais posições recebem 0 automaticamente
+```
+
+> ⚠️ Diferente do vetor, ao declarar uma matriz com dimensão implícita **somente a primeira dimensão (linhas)** pode ficar em aberto — o número de colunas precisa ser sempre informado.
+
+---
+
+### 7. Manipulação de matrizes
+
+Todo o processo de manipulação de uma matriz é **semelhante ao de um vetor** — a diferença está no uso de **dois índices** em vez de apenas um, o que normalmente exige **dois laços de repetição aninhados**: um para percorrer as linhas e outro para as colunas.
+
+```c
+int ma[3][3];
+
+for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 3; j++) {
+        printf("Digite o valor da posição [%d][%d]: ", i, j);
+        scanf("%d", &ma[i][j]);
+    }
+}
+```
+
+#### Prática
+> Declare uma matriz 3x3, preencha-a com valores lidos do usuário e exiba a soma de todos os elementos.
+
+> Declare uma matriz 4x4 e exiba apenas os elementos da diagonal principal (posições em que o índice da linha é igual ao da coluna).
+
+---
+
+### 📝 8. Exercícios de Fixação
+
+**Desafio — Álbum da Copa (OBI)**
+
+Em ano de Copa do Mundo de Futebol, o álbum de figurinhas oficial contém espaços numerados de 1 a N, e cada figurinha, também numerada de 1 a N, corresponde a um desses espaços. As figurinhas são vendidas em envelopes fechados, sem que o comprador saiba quais está adquirindo — por isso, pode ocorrer de comprar uma figurinha repetida.
+
+Dado o número total de espaços/figurinhas do álbum (N), o número de figurinhas já compradas (M) e a lista dessas M figurinhas (que pode conter repetições), determine **quantas figurinhas ainda faltam** para completar o álbum.
+
+- **Entrada:** um inteiro N (número total de figurinhas/espaços); em seguida um inteiro M (figurinhas já compradas); depois M linhas, cada uma com um inteiro X (uma figurinha comprada).
+- **Saída:** uma única linha com um inteiro — a quantidade de figurinhas que faltam.
+- **Restrições:** 1 ≤ N ≤ 100; 1 ≤ M ≤ 300; 1 ≤ X ≤ N.
+
+🔗 [Enunciado completo (OBI)](https://olimpiada.ic.unicamp.br/pratique/pj/2018/f1/album/)
+
+> 💡 Dica: use um vetor de tamanho N+1 para marcar quais figurinhas já foram coladas, percorrendo-o ao final para contar as que faltam.
+
+**Lista Beecrowd — vetores e matrizes**
+
+> Problema [1174](https://judge.beecrowd.com/pt/problems/view/1174);
+
+> Problema [1175](https://judge.beecrowd.com/pt/problems/view/1175);
+
+> Problema [1176](https://judge.beecrowd.com/pt/problems/view/1176) — obs: fazer sem recalcular posições já calculadas;
+
+> Problema [1179](https://judge.beecrowd.com/pt/problems/view/1179);
+
+> Problema [1435](https://judge.beecrowd.com/pt/problems/view/1435);
+
+> Problema [1183](https://judge.beecrowd.com/pt/problems/view/1183);
+
+> Problema [1184](https://judge.beecrowd.com/pt/problems/view/1184);
+
+> Problema [1185](https://judge.beecrowd.com/pt/problems/view/1185);
+
+> Problema [1186](https://judge.beecrowd.com/pt/problems/view/1186);
+
+> Problema [1187](https://judge.beecrowd.com/pt/problems/view/1187);
+
+> Problema [3428](https://judge.beecrowd.com/pt/problems/view/3428);
