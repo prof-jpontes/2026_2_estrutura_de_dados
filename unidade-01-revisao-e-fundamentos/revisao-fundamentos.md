@@ -14,6 +14,29 @@ Sejam bem-vindos à disciplina de Estrutura de Dados, ministrada no curso superi
   - [3. Operadores Aritméticos](#3-operadores-aritméticos)
   - [4. Casting de Dados](#4-casting-de-dados)
   - [5. Exercícios de Fixação](#-5-exercícios-de-fixação)
+- [Desvios Condicionais](#-desvios-condicionais)
+  - [1. Estrutura do `if`, `else if` e `else`](#-1-estrutura-do-if-else-if-e-else)
+  - [2. Estrutura switch](#-2-estrutura-switch)
+  - [3. Exercícios de Fixação](#-3-exercícios-de-fixação)
+- [Laços de Repetição](#-laços-de-repetição)
+  - [1. Laço `for`](#-1-laço-for)
+  - [2. Laço `while`](#-2-laço-while)
+  - [3. Laço do/while](#-3-laço-dowhile)
+  - [4. Exercícios Práticos](#-4-exercícios-práticos)
+- [Estruturas de dados homogêneas — vetores e matrizes](#-estruturas-de-dados-homogêneas--vetores-e-matrizes)
+  - [1. Arranjos](#1-arranjos)
+  - [2. Declaração de vetores](#2-declaração-de-vetores)
+  - [3. Atribuição e leitura de elementos](#3-atribuição-e-leitura-de-elementos)
+  - [4. Manipulação de elementos do vetor](#4-manipulação-de-elementos-do-vetor)
+  - [5. Matrizes — conceito](#5-matrizes--conceito)
+  - [6. Declaração de matrizes](#6-declaração-de-matrizes)
+  - [7. Manipulação de matrizes](#7-manipulação-de-matrizes)
+  - [8. Exercícios de Fixação](#-8-exercícios-de-fixação)
+
+
+
+
+
 
 
 >> 📅 Segunda-feira, 3/8/2026 
