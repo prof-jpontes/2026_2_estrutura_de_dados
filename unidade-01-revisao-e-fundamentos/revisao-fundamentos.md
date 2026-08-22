@@ -932,4 +932,439 @@ Dado o número total de espaços/figurinhas do álbum (N), o número de figurinh
 
 > Problema [1187](https://judge.beecrowd.com/pt/problems/view/1187);
 
-> Problema [3428](https://judge.beecrowd.com/pt/problems/view/3428);
+> Problema [3428](https://judge.beecrowd.com/pt/problems/view/3428).
+
+
+>> 📅 Sábado, 22/8/2026
+
+## 🧩 Modularização — Funções
+
+### 1. Por que modularizar?
+
+**🎯 Objetivo:**
+Apresentar o conceito de modularização e justificar o uso de funções na organização de um programa.
+
+Até aqui, todos os nossos programas foram escritos inteiramente dentro da função `main`. Isso funciona bem para programas pequenos, mas se torna inviável à medida que o programa cresce.
+
+**Modularizar** um programa significa dividi-lo em blocos menores e independentes — as **funções** — cada um responsável por uma tarefa específica.
+
+#### Motivos para usar funções
+
+- Permitir o **reaproveitamento** de código já construído (por você ou por outros programadores);
+- Evitar que um trecho de código se **repita várias vezes** dentro do mesmo programa;
+- Permitir a **alteração** de um trecho de código de forma mais rápida — com uma função, basta alterar apenas dentro dela;
+- Evitar que os blocos do programa fiquem **grandes demais** e, por consequência, mais difíceis de entender;
+- Facilitar a **leitura** do programa-fonte;
+- Separar o programa em partes que possam ser **compreendidas isoladamente**.
+
+> 📌 Pense em uma função como uma "caixa-preta": quem a utiliza não precisa saber *como* ela faz o que faz, apenas *o que* ela recebe e *o que* ela devolve.
+
+---
+
+### 2. Formato geral de uma função em C
+
+```c
+tipo_do_retorno nomeDaFuncao(lista_de_parametros) {
+    // corpo da função
+    return valor; // obrigatório se tipo_do_retorno for diferente de void
+}
+```
+
+| Parte | Significado |
+|---|---|
+| `tipo_do_retorno` | Tipo do dado devolvido pela função (`int`, `float`, `char`, etc.). Use `void` quando a função **não** devolve valor. |
+| `nomeDaFuncao` | Identificador usado para chamar a função. |
+| `lista_de_parametros` | Variáveis que a função recebe como entrada, separadas por vírgula. Pode ser vazia. |
+| `corpo da função` | Bloco de instruções executado quando a função é chamada. |
+| `return` | Encerra a função e devolve um valor a quem a chamou. |
+
+#### Exemplo — função com retorno
+
+```c
+float calcularMedia(float n1, float n2, float n3) {
+    return (n1 + n2 + n3) / 3;
+}
+```
+
+#### Exemplo — função sem retorno (`void`)
+
+```c
+void mostrarMensagem() {
+    printf("Bem-vindo à disciplina de Estrutura de Dados!\n");
+}
+```
+
+> ⚠️ Uma função `void` pode usar `return;` (sem valor) para encerrar sua execução antecipadamente, mas nunca `return valor;`.
+
+---
+
+### 3. Declaração (protótipo), definição e chamada
+
+**🎯 Objetivo:**
+Mostrar como declarar, definir e chamar uma função, incluindo o uso de protótipos.
+
+Em C, uma função precisa ser **conhecida pelo compilador antes de ser usada**. Isso é feito de duas formas:
+
+- Escrevendo a função **completa antes** da `main`;
+- Ou escrevendo apenas o **protótipo** (a "assinatura" da função) antes da `main`, e a função completa depois.
+
+```c
+tipo_do_retorno nomeDaFuncao(tipo1, tipo2, ...); // protótipo — note o ; no final
+```
+
+#### Exemplo completo
+
+```c
+#include <stdio.h>
+
+float calcularMedia(float n1, float n2, float n3); // protótipo
+
+int main() {
+    float media = calcularMedia(8.5, 7.0, 9.0); // chamada
+    printf("Média: %.2f\n", media);
+    return 0;
+}
+
+float calcularMedia(float n1, float n2, float n3) { // definição
+    return (n1 + n2 + n3) / 3;
+}
+```
+
+> 📌 O protótipo é especialmente útil quando a função é definida **depois** de onde é chamada, ou em arquivos separados — situação comum em projetos maiores.
+
+---
+
+### 4. Parâmetros e retorno de valores
+
+**🎯 Objetivo:**
+Explicar a diferença entre funções com e sem retorno, e como os parâmetros são utilizados.
+
+| | Com retorno | Sem retorno (`void`) |
+|---|---|---|
+| Tipo declarado | `int`, `float`, `char`, etc. | `void` |
+| Usa `return valor;`? | Sim, obrigatório | Não (pode usar `return;` sozinho) |
+| Uso típico | Calcular e devolver um resultado | Executar uma ação (imprimir, alterar algo) |
+
+```c
+int quadrado(int n) {          // com retorno
+    return n * n;
+}
+
+void exibirLinha(int tamanho) { // sem retorno
+    for (int i = 0; i < tamanho; i++) {
+        printf("-");
+    }
+    printf("\n");
+}
+```
+
+---
+
+### 5. Passagem de parâmetros por valor
+
+**🎯 Objetivo:**
+Demonstrar que, em C, os parâmetros são passados **por valor** por padrão — a função recebe uma **cópia**, não a variável original.
+
+```c
+void tentaTrocar(int a, int b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+int main() {
+    int x = 5, y = 10;
+    tentaTrocar(x, y);
+    printf("%d %d\n", x, y); // ainda imprime 5 10 — a troca NÃO afetou x e y
+    return 0;
+}
+```
+
+> ⚠️ Dentro de `tentaTrocar`, `a` e `b` são variáveis **novas**, independentes de `x` e `y`. Qualquer alteração feita nelas é perdida ao final da função.
+
+> 💡 Para que uma função consiga alterar de fato as variáveis originais, é necessário usar **ponteiros** — assunto da nossa próxima aula.
+
+---
+
+### 6. Escopo de variáveis
+
+**🎯 Objetivo:**
+Diferenciar variáveis locais e globais.
+
+- **Variável local:** declarada dentro de uma função (ou bloco); só existe e só pode ser acessada **dentro** dela.
+- **Variável global:** declarada fora de todas as funções; pode ser acessada por **qualquer** função do programa.
+
+```c
+int contadorGlobal = 0; // variável global
+
+void incrementar() {
+    int passo = 1;       // variável local — só existe dentro de incrementar()
+    contadorGlobal += passo;
+}
+```
+
+> ⚠️ O uso excessivo de variáveis globais dificulta o entendimento do programa, pois qualquer função pode alterá-las. Prefira sempre variáveis locais e passe dados entre funções por meio de parâmetros e retorno.
+
+---
+
+### 📝 Exercícios de Fixação
+
+**Exercício 00**
+
+Escreva uma função `int quadrado(int n)` que retorna o quadrado de um número, e um `main` que a utiliza para exibir o quadrado de um valor lido do usuário.
+
+**Exercício 01**
+
+Escreva uma função `void exibirTabuada(int n)` que imprime a tabuada de `n` (de 1 a 10).
+
+**Exercício 02**
+
+Crie uma função `float calcularMedia(float n1, float n2, float n3)` que recebe três notas e retorna a média. Utilize-a para refazer o exercício de aprovação/recuperação/reprovação visto anteriormente.
+
+**Exercício 03**
+
+Crie uma função `int ehPar(int n)` que retorna `1` se `n` for par e `0` caso contrário. Utilize-a para ler 10 números e classificar cada um como par ou ímpar.
+
+**Exercício 04**
+
+Reescreva o programa que calcula a área de um triângulo, círculo, trapézio, quadrado e retângulo (exercícios da unidade de Estrutura Sequencial), criando **uma função para cada área**.
+
+---
+
+## 🔁 Recursividade
+
+### 1. O que é uma função recursiva?
+
+**🎯 Objetivo:**
+Apresentar o conceito de recursividade e seus dois elementos essenciais: caso base e caso recursivo.
+
+Uma função é **recursiva** quando ela chama a si mesma, direta ou indiretamente, para resolver um problema menor do mesmo tipo.
+
+Toda função recursiva precisa de dois elementos:
+
+- **Caso base:** a condição que interrompe as chamadas recursivas e devolve um resultado direto, sem nova chamada.
+- **Caso recursivo:** a parte em que a função chama a si mesma, aplicada a uma versão menor (ou mais simples) do problema.
+
+> ⚠️ Uma função recursiva **sem caso base**, ou com um caso base que nunca é alcançado, chama a si mesma indefinidamente — isso esgota a memória reservada para as chamadas (a **pilha**) e o programa é encerrado com erro (*stack overflow*).
+
+---
+
+### 2. Exemplo clássico: fatorial
+
+Vamos pensar em uma função para calcular o fatorial de um número inteiro `n`. O fatorial de `n` é definido como:
+- `n! = n × (n − 1)!`, para todo `n ≥ 1` e `0! = 1`.
+
+Se pensamos em escrever uma função para calcular o fatorial de `n`, faremos: 
+```c
+int fatorial(int n){
+    if (n==0 || n == 1) return 1;
+
+    for(int i=n-1; i>1; i--){
+        n *= i;
+    }
+    return n;
+}
+```
+
+Este caso é possível ser facilmente reescrito na forma: 
+
+```c
+int fatorial(int n) {
+    if (n == 0) {            // caso base
+        return 1;
+    }
+    return n * fatorial(n - 1); // caso recursivo
+}
+```
+
+#### Como as chamadas acontecem (rastreamento de `fatorial(4)`)
+
+| Chamada | Resultado |
+|---|---|
+| `fatorial(4)` | `4 * fatorial(3)` |
+| `fatorial(3)` | `3 * fatorial(2)` |
+| `fatorial(2)` | `2 * fatorial(1)` |
+| `fatorial(1)` | `1 * fatorial(0)` |
+| `fatorial(0)` | `1` *(caso base — não chama mais ninguém)* |
+
+> 📌 As chamadas "empilham" até alcançar o caso base e, então, os resultados vão sendo multiplicados de volta, na ordem inversa, até `fatorial(4)` retornar `24`.
+
+---
+
+### 3. Exemplo: sequência de Fibonacci
+
+```c
+int fibonacci(int n) {
+    if (n == 0) return 0;   // 1º caso base
+    if (n == 1) return 1;   // 2º caso base
+    return fibonacci(n - 1) + fibonacci(n - 2); // caso recursivo
+}
+```
+
+> ⚠️ Essa versão recursiva do Fibonacci é didática, mas **ineficiente**: o número de chamadas cresce exponencialmente, pois o mesmo valor é recalculado várias vezes (por exemplo, `fibonacci(n-2)` é calculado tanto pela chamada de `fibonacci(n-1)` quanto diretamente).
+
+---
+
+### 4. Recursão vs. iteração
+
+Todo problema resolvido com recursão também pode ser resolvido com um laço (`for`/`while`), e vice-versa.
+
+| | Recursão | Iteração |
+|---|---|---|
+| Legibilidade | Costuma ser mais próxima da definição matemática do problema | Costuma exigir controle explícito de variáveis auxiliares |
+| Uso de memória | Cada chamada ocupa espaço na pilha de execução | Não cresce com o tamanho da entrada |
+| Desempenho | Pode ser mais lento por causa do custo de cada chamada | Geralmente mais eficiente |
+| Quando preferir | Problemas naturalmente recursivos (divisão de um problema em subproblemas menores do mesmo tipo) | Quando o desempenho e o uso de memória são críticos |
+
+---
+
+### 📝 Exercícios de Fixação
+
+**Exercício 00**
+
+Escreva uma função recursiva `int somaAte(int n)` que retorna a soma dos inteiros de `1` até `n`.
+
+**Exercício 01**
+
+Escreva uma função recursiva `int potencia(int base, int expoente)` que calcula `base` elevado a `expoente`.
+
+**Exercício 02**
+
+Escreva uma função recursiva `int mdc(int a, int b)` que calcula o máximo divisor comum entre `a` e `b`, usando o algoritmo de Euclides (`mdc(a, b) = mdc(b, a % b)`, com caso base `mdc(a, 0) = a`).
+
+**Exercício 03**
+
+Escreva uma função recursiva `int contarDigitos(int n)` que retorna a quantidade de dígitos de um número inteiro.
+
+**Exercício 04 — Fibonacci, How Many Calls?**
+
+Problema **Fibonacci, How Many Calls?**: implemente a função recursiva de Fibonacci contando quantas vezes ela é chamada para calcular `fib(n)`.
+
+🔗 [Beecrowd 1029](https://judge.beecrowd.com/pt/problems/view/1029)
+
+---
+
+
+## 📍 Ponteiros
+
+### 1. O que é um ponteiro?
+
+**🎯 Objetivo:**
+Apresentar o conceito de endereço de memória e de ponteiro.
+
+Toda variável, ao ser declarada, ocupa um espaço na memória do computador, identificado por um **endereço**. Até agora, sempre acessamos esse espaço **pelo nome** da variável — mas também é possível acessá-lo **pelo endereço**.
+
+Um **ponteiro** é uma variável especial que, em vez de armazenar um valor comum (um número, um caractere, etc.), armazena o **endereço de memória** de outra variável.
+
+---
+
+### 2. Operadores `&` e `*`
+
+| Operador | Nome | O que faz |
+|---|---|---|
+| `&variavel` | Operador de endereço | Obtém o **endereço de memória** onde `variavel` está armazenada |
+| `*ponteiro` | Operador de indireção (dereferência) | Acessa o **valor armazenado** no endereço apontado por `ponteiro` |
+
+> ℹ️ Você já usou o operador `&` diversas vezes, sem perceber: em `scanf("%d", &idade);`, estamos passando o **endereço** de `idade` para que a função `scanf` possa escrever o valor lido diretamente naquela posição de memória.
+
+```c
+int idade = 25;
+int *pIdade = &idade;   // pIdade armazena o endereço de idade
+
+printf("%d\n", idade);    // 25              -> valor de idade
+printf("%p\n", &idade);   // 0x7ffe...        -> endereço de idade
+printf("%p\n", pIdade);   // 0x7ffe... (igual) -> mesmo endereço, guardado em pIdade
+printf("%d\n", *pIdade);  // 25              -> valor apontado por pIdade
+```
+
+---
+
+### 3. Declaração e inicialização de ponteiros
+
+Um ponteiro é declarado indicando o **tipo do dado apontado**, seguido de `*` e do nome da variável.
+
+```c
+tipo *nome;
+```
+
+```c
+int *p;      // ponteiro para int
+float *pf;   // ponteiro para float
+char *pc;    // ponteiro para char
+```
+
+> ⚠️ Um ponteiro declarado e **não inicializado** aponta para um endereço indefinido ("lixo de memória"). Usar `*p` nesse estado (ler ou escrever) é um erro grave — sempre inicialize um ponteiro com `&variavel` antes de usá-lo, ou com `NULL` se ele ainda não deve apontar para nada.
+
+```c
+int *p = NULL; // ponteiro que ainda não aponta para nenhuma variável válida
+```
+
+---
+
+### 4. Ponteiros e passagem de parâmetros por referência
+
+Lembra da função `tentaTrocar`, na aula de funções, que não conseguia trocar os valores de `x` e `y`? Usando ponteiros, a função passa a receber o **endereço** das variáveis, e pode alterá-las de fato.
+
+```c
+void trocar(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main() {
+    int x = 5, y = 10;
+    trocar(&x, &y);            // passamos os endereços de x e y
+    printf("%d %d\n", x, y);   // agora imprime 10 5 — a troca funcionou
+    return 0;
+}
+```
+
+> 📌 Passar um parâmetro **por referência** (via ponteiro) permite que a função modifique a variável original do chamador — diferente da passagem por valor, que trabalha sobre uma cópia.
+
+---
+
+### 5. Ponteiros e vetores
+
+O nome de um vetor, sozinho, já se comporta como um ponteiro para sua primeira posição:
+
+```c
+int notas[5] = {10, 8, 7, 9, 6};
+int *p = notas; // equivalente a: int *p = &notas[0];
+
+for (int i = 0; i < 5; i++) {
+    printf("%d\n", *(p + i)); // equivalente a notas[i]
+}
+```
+
+| Notação com índice | Notação com ponteiro | Significado |
+|---|---|---|
+| `notas[0]` | `*(p + 0)` ou `*p` | Valor da 1ª posição |
+| `notas[i]` | `*(p + i)` | Valor da posição `i` |
+| `&notas[i]` | `p + i` | Endereço da posição `i` |
+
+> ℹ️ Essa equivalência é a razão pela qual, ao passar um vetor como parâmetro de uma função em C, na prática estamos sempre passando um **ponteiro** para sua primeira posição — por isso uma função pode alterar os elementos de um vetor recebido como parâmetro, mesmo sem usar `&`.
+
+---
+
+### 📝 Exercícios de Fixação
+
+**Exercício 00**
+
+Escreva uma função `void dobrar(int *n)` que dobra o valor da variável apontada por `n`. Teste com uma variável lida do usuário.
+
+**Exercício 01**
+
+Reescreva a função `trocar` usando ponteiros e teste-a com dois valores lidos do usuário, exibindo os valores antes e depois da troca.
+
+**Exercício 02**
+
+Escreva uma função `int somaVetor(int *v, int tam)` que recebe um vetor (via ponteiro) e seu tamanho, e retorna a soma de seus elementos.
+
+**Exercício 03**
+
+Escreva uma função `void inverter(int *v, int tam)` que inverte a ordem dos elementos de um vetor, alterando-o diretamente (sem criar um novo vetor).
+
+**Exercício 04**
+
+Escreva uma função `int maiorElemento(int *v, int tam)` que retorna o maior valor de um vetor, recebendo-o via ponteiro.
