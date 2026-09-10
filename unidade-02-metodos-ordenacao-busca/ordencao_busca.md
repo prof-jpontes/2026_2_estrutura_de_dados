@@ -11,12 +11,12 @@ Esta é a unidade temática #2 da disciplina de Estrutura de Dados, ministrada n
 - [Método Bolha ou Bubblesort](#método-bolha-ou-bubblesort)
 - [Método de Seleção ou Selection Sort](#método-de-seleção-ou-selection-sort)
 - [Método de Inserção ou Insertion Sort](#método-de-inserção-ou-insertion-sort)
-- [Algoritmos de Busca](#algoritmos-de-busca)
 - [Noção de Complexidade dos Algoritmos de Ordenação](#noção-de-complexidade-dos-algoritmos-de-ordenação)
+- [Algoritmos de Busca](#algoritmos-de-busca)
 - [Um Algoritmo de Ordenação sofisticado: Merge Sort](#um-algoritmo-de-ordenação-sofisticado-merge-sort)
 
 
->> 📅 Quarta-feira, 8/10/2025 
+>> 📅 Quarta-feira, 26/08/2026 
 
 ## Método Bolha ou Bubblesort
 
@@ -98,8 +98,7 @@ Importante que as funções mostrar(...) e bubblesort(...) recebem o vetor. A re
 
 A passagem de parâmetro por referencia permite a alteração direta: qualquer modificação feita nos elementos do vetor dentro da função é refletida no vetor original, pois está sendo acessado o mesmo local na memória, não com uma cópia de valores. Essa abordagem é eficiente, especialmente para vetores grandes, pois evita a necessidade de copiar todos os elementos do vetor para a função. 
 
-
->> 📅 Sexta-feira, 10/10/2025 
+---
 
 ## Método de Seleção ou Selection Sort
 
@@ -152,6 +151,9 @@ void selection_sort(int v[], int t){
 
 Para que este algoritmo seja adaptado para ordenação decrescente, basta mudar a comparação <  para > no *if* do *for* interno. 
 
+---
+
+>> 📅 Segunda-feira, 31/08/2026
 ## Método de Inserção ou Insertion Sort
 
 O método de ordenação por inserção, ou Insertion Sort, consiste em “inserir” um elemento em uma posição tal que não haja, à sua esquerda, nenhum elemento maior do que ele, no caso de ordenação crescente. Diferentemente do Bubble Sort e do Selection Sort, em que, após a primeira iteração do laço externo, tem-se a garantia de que a última ou a primeira posição, respectivamente, está com o valor correto, não há essa garantia no Insertion Sort. Entretanto, há a certeza de que não existirão elementos à esquerda da posição analisada que sejam maiores do que ela (em caso de ordenação crescente) ou menores (em caso de ordenação decrescente).
@@ -177,7 +179,6 @@ As figuras a seguir apresentam a ordenação crescente de um vetor de inteiros d
 
 ![Insertion Sort - 6ª iteração](https://github.com/user-attachments/assets/c1719365-fd96-46c2-9eef-9917dd1db047)
 
->> 📅 Quarta-feira, 15/10/2025 
 
 A listagem a seguir apresenta a função insertion_sort(int v[], int t). As funções main() e mostrar(int v[], int t) não são apresentadas — elas são as mesmas usadas na listagem acima que apresenta o Bubblesort. 
 
@@ -197,140 +198,10 @@ void insertion_sort(int v[], int t){
     }
 }
 ```
----
-
-## Algoritmos de Busca
-
-
-Muitas aplicações computacionais dependem da recuperação eficiente de informações. Encontrar o nome de um contato no celular, localizar um produto em um sistema de estoque, identificar um registro em um banco de dados ou determinar se um elemento pertence a uma coleção — todas essas ações envolvem **algoritmos de busca**.
-
-O objetivo de um algoritmo de busca é *localizar um elemento específico*, dentro de uma estrutura de dados, como por exemplo, vetores. Dependendo da técnica utilizada, essa busca pode ser mais rápida, mais simples ou exigir condições especiais, como um conjunto previamente ordenado.
-
-Entre os métodos mais conhecidos estão:
-
-- **Busca Sequencial (ou Linear)** — simples, não exige ordenação e percorre os elementos um a um.
-- **Busca Binária** — muito mais eficiente, porém exige que os dados estejam ordenados.
-
-Nesta seção, estudaremos o método mais básico: a **busca sequencial**.
-
-
-### Busca Sequencial
-
-O método de **busca sequencial**, também conhecido como busca linear, consiste em verificar cada elemento da estrutura, um após o outro, até que a chave de busca seja encontrada ou que o fim do vetor seja alcançado.
-
-Seu funcionamento é direto: a chave com o primeiro elemento; se forem diferentes, a chave é comparada com o segundo; e assim sucessivamente. Caso haja coincidência, o algoritmo retorna a posição do elemento. Se o vetor chegar ao fim sem encontrar a chave, conclui-se que ela não está presente.
-
->**Exemplo:** um jogador está procurando uma carta específica em um monte desorganizado. Ele observa a primeira, depois a segunda, depois a terceira, até encontrar o valor desejado ou chegar ao final do monte. Esse é exatamente o comportamento da busca sequencial.
-
-
-**Características:**
-
-- Não exige estrutura ordenada;
-- Implementação simples;
-- Pode encerrar antes do fim, caso encontre a chave;
-- Custos variáveis conforme a posição da chave;
-- Ineficiente para vetores grandes.
-
-Consideremos o vetor de inteiros formado pelos números *70, 21, 63, 50, 70, 82, 19* e chave 50. O algoritmo fará as seguintes iterações: 
-
-1. `70` → diferente;  
-2. `21` → diferente  
-3. `63` → diferente  
-4. `50` → **encontrado**
-
-A busca encerra na 4ª comparação e retornará o índice `3`. 
-
-A listagem abaixo apresenta a implementação da busca sequencial, escrita em linguagem C.
-
-```c
-int busca_sequencial(int v[], int t, int chave){
-
-    int i;
-    for(i=0; i<t; i++){ //pode percorrer todo o vetor;
-        if(v[i] == chave) return i; //a chave foi encotrada, logo, retorno o índice onde ela foi encontrada. Observa-se que se a chave estiver repetida no vetor, o algoritmo retornará a primeira ocorrência. 
-    }
-    return -1; //-1 indica que a chave não foi encontrada.
-}
-
-```
-
->> 📅 Segunda-feira, 20/10/2025 
-
-### Busca Binária
-
-Embora a busca sequencial seja simples e funcione em qualquer vetor, ela pode ser pouco eficiente em estruturas grandes. Em cenários nos quais o conjunto de dados está **ordenado**, é possível utilizar métodos muito mais rápidos — e o mais clássico deles é a **Busca Binária**.
-
-A ideia central da busca binária é reduzir drasticamente o espaço de busca a cada passo. Em vez de analisar elemento por elemento, o algoritmo divide o vetor ao meio e verifica em qual das metades a chave de busca pode estar, descartando a outra metade imediatamente. Como essa eliminação ocorre a cada iteração, o método se torna extremamente eficiente.
-
-> **Condição obrigatória**: o vetor deve estar ordenado. Sem essa condição, a busca binária não funciona.
-
-
-> **Exemplo de aplicação:** imagine procurar um número em uma lista telefônica impressa. Ninguém lê página por página como na busca sequencial; em vez disso, abre-se o livro aproximadamente no meio e verifica-se se o nome procurado estaria antes ou depois daquela página. Em seguida, repete-se o processo apenas com a metade relevante. Esse é exatamente o princípio da busca binária, chamado **dividir para conquistar**.
-
-**Funcionamento geral:** (considere um vetor ordenado de forma crescewnte)
-
-1. Defina duas posições: `esquerda` (início) e `direita` (fim do vetor);
-2. Calcule o índice do `meio`.
-3. Compare o elemento do meio com a `chave` de busca:
-   - Se forem iguais, significa que a chave foi encontrada e encerre, com o retorno do índice;
-   - Se a chave for menor, descarte a metade direita;
-   - Se a chave for maior, descarte a metade esquerda;
-4. Repita o processo até encontrar o valor ou até que não haja mais elementos para pesquisar.
-
-Consideremos o vetor de inteiros ordenado (necessariamene) formado pelos números *19, 21, 50, 63, 70, 70, 82* e chave 50. As imagens a seguir apresentam os passos dessa busca. O índice destacado em verde representa a posição apontada no momento atual, ao passo que a parte cinza é descarcatada pelo algoritmo.
-
-![Busca binária - 1ª iteração](https://github.com/user-attachments/assets/b2d36819-713f-40ae-9f9f-2e67ec29b34a)
-
-Como o meio é maior que a chave (50), descarta-se todas as posições do meio para a direita e segue para a próxima iteração. 
-
-![Busca binária - 2ª iteração](https://github.com/user-attachments/assets/884619ee-368e-45be-b08b-334d61e518c6)
-
-Como o meio é menor que a chave (50), descarta-se todas as posições do meio para a esquerda e segue para a próxima iteração. As posições que já haviam sido descartadas continuam no mesmo estado.
-
-![Busca binária - 3ª iteração](https://github.com/user-attachments/assets/12e2cddf-17ff-4471-94c9-b15339b1906e)
-
-A variável `meio` aponta para um índice que guarda exatamente a um valor igual à chave. Assim, o algoritmo retorna esse índice (no exemplo é o 2). 
-
-Observa-se que se a chave fosse um valor que não estivesse no vetor, por exemplo 48, a variável `fim` seria atualizada para apontar para o índice `meio - 1`, o seja, `1`, enquanto a variável `início` continuaria a apontar para o índice `2`. Com `fim` menor do que `início`, chega-se à conclusão que a chave não está no vetor. 
-
-
-A listagem abaixo apresenta a implementação da busca binária, escrita em linguagem C.
-
-```c
-int busca_binaria(int v[], int t, int chave){
-    int inicio = 0, fim = t-1, meio;
-
-    while(inicio <= fim){ // O código será executado enquanto inicio e fim não se cruzarem ou enquanto não for encontrado o returno.
-        meio = (inicio + fim) / 2; // Cálculo do meio;
-        if(v[meio] == chave) return meio; // Verificação se o meio aponta para o índice onde está a chave. Se sim, retorna;
-
-        if(v[meio] > chave) fim = meio - 1; // Senão e se o meio aponta para  um índice que tem um número maior que a chave, então a chave está para a esquerda
-        else inicio = meio + 1; // Caso contário, a chave estará para a direita. 
-    }
-    return -1; //-1 indica que a chave não foi encontrada.
-}
-```
-
-
-A busca binária também pode ser facilmente implementada usado a abordagem recursiva, da seguinte forma: 
-```c
-int busca_binaria_recursiva(int v[], int inicio, int fim, int chave){
-    
-    if(inicio > fim) return -1;
-
-    int meio = (inicio + fim) / 2;
-
-    if(v[meio] == chave) return meio;
-
-    if(v[meio] > chave) return busca_binaria_recursiva(v, inicio, meio - 1, chave);
-
-    return busca_binaria_recursiva(v, meio + 1, fim, chave);
-}
-```
-
-*Desafio:* (i) leia ou gere um vetor de 1000 posições; (ii) ordene esse vetor; (iii) utilize as abordagem de busca sequencial e busca binária, contando quantas iterações são necessárias. Use números distintos, inclusive com valores que não estão no vetor.   
 
 ---
+
+>> 📅 Quarta-feira, 02/09/2026 
 
 ## Noção de Complexidade dos Algoritmos de Ordenação
 
@@ -388,6 +259,137 @@ Embora o valor exato seja $S = \\frac{n^2 - n}{2}$, na notação Big-O considera
 > Algoritmos de ordem quadrática não são adequados para grandes volumes de dados, sendo necessário utilizar abordagens mais sofisticadas. 
 
 ---
+
+## Algoritmos de Busca
+
+Muitas aplicações computacionais dependem da recuperação eficiente de informações. Encontrar o nome de um contato no celular, localizar um produto em um sistema de estoque, identificar um registro em um banco de dados ou determinar se um elemento pertence a uma coleção — todas essas ações envolvem **algoritmos de busca**.
+
+O objetivo de um algoritmo de busca é *localizar um elemento específico*, dentro de uma estrutura de dados, como por exemplo, vetores. Dependendo da técnica utilizada, essa busca pode ser mais rápida, mais simples ou exigir condições especiais, como um conjunto previamente ordenado.
+
+Entre os métodos mais conhecidos estão:
+
+- **Busca Sequencial (ou Linear)** — simples, não exige ordenação e percorre os elementos um a um.
+- **Busca Binária** — muito mais eficiente, porém exige que os dados estejam ordenados.
+
+Nesta seção, estudaremos o método mais básico: a **busca sequencial**.
+
+
+### Busca Sequencial
+
+O método de **busca sequencial**, também conhecido como busca linear, consiste em verificar cada elemento da estrutura, um após o outro, até que a chave de busca seja encontrada ou que o fim do vetor seja alcançado.
+
+Seu funcionamento é direto: a chave com o primeiro elemento; se forem diferentes, a chave é comparada com o segundo; e assim sucessivamente. Caso haja coincidência, o algoritmo retorna a posição do elemento. Se o vetor chegar ao fim sem encontrar a chave, conclui-se que ela não está presente.
+
+>**Exemplo:** um jogador está procurando uma carta específica em um monte desorganizado. Ele observa a primeira, depois a segunda, depois a terceira, até encontrar o valor desejado ou chegar ao final do monte. Esse é exatamente o comportamento da busca sequencial.
+
+
+**Características:**
+
+- Não exige estrutura ordenada;
+- Implementação simples;
+- Pode encerrar antes do fim, caso encontre a chave;
+- Custos variáveis conforme a posição da chave;
+- Ineficiente para vetores grandes.
+
+Consideremos o vetor de inteiros formado pelos números *70, 21, 63, 50, 70, 82, 19* e chave 50. O algoritmo fará as seguintes iterações: 
+
+1. `70` → diferente;  
+2. `21` → diferente  
+3. `63` → diferente  
+4. `50` → **encontrado**
+
+A busca encerra na 4ª comparação e retornará o índice `3`. 
+
+A listagem abaixo apresenta a implementação da busca sequencial, escrita em linguagem C.
+
+```c
+int busca_sequencial(int v[], int t, int chave){
+
+    int i;
+    for(i=0; i<t; i++){ //pode percorrer todo o vetor;
+        if(v[i] == chave) return i; //a chave foi encotrada, logo, retorno o índice onde ela foi encontrada. Observa-se que se a chave estiver repetida no vetor, o algoritmo retornará a primeira ocorrência. 
+    }
+    return -1; //-1 indica que a chave não foi encontrada.
+}
+
+```
+
+### Busca Binária
+
+Embora a busca sequencial seja simples e funcione em qualquer vetor, ela pode ser pouco eficiente em estruturas grandes. Em cenários nos quais o conjunto de dados está **ordenado**, é possível utilizar métodos muito mais rápidos — e o mais clássico deles é a **Busca Binária**.
+
+A ideia central da busca binária é reduzir drasticamente o espaço de busca a cada passo. Em vez de analisar elemento por elemento, o algoritmo divide o vetor ao meio e verifica em qual das metades a chave de busca pode estar, descartando a outra metade imediatamente. Como essa eliminação ocorre a cada iteração, o método se torna extremamente eficiente.
+
+> **Condição obrigatória**: o vetor deve estar ordenado. Sem essa condição, a busca binária não funciona.
+
+> **Exemplo de aplicação:** imagine procurar um número em uma lista telefônica impressa. Ninguém lê página por página como na busca sequencial; em vez disso, abre-se o livro aproximadamente no meio e verifica-se se o nome procurado estaria antes ou depois daquela página. Em seguida, repete-se o processo apenas com a metade relevante. Esse é exatamente o princípio da busca binária, chamado **dividir para conquistar**.
+
+**Funcionamento geral:** (considere um vetor ordenado de forma crescewnte)
+
+1. Defina duas posições: `esquerda` (início) e `direita` (fim do vetor);
+2. Calcule o índice do `meio`.
+3. Compare o elemento do meio com a `chave` de busca:
+   - Se forem iguais, significa que a chave foi encontrada e encerre, com o retorno do índice;
+   - Se a chave for menor, descarte a metade direita;
+   - Se a chave for maior, descarte a metade esquerda;
+4. Repita o processo até encontrar o valor ou até que não haja mais elementos para pesquisar.
+
+Consideremos o vetor de inteiros ordenado (necessariamene) formado pelos números *19, 21, 50, 63, 70, 70, 82* e chave 50. As imagens a seguir apresentam os passos dessa busca. O índice destacado em verde representa a posição apontada no momento atual, ao passo que a parte cinza é descarcatada pelo algoritmo.
+
+![Busca binária - 1ª iteração](https://github.com/user-attachments/assets/b2d36819-713f-40ae-9f9f-2e67ec29b34a)
+
+Como o meio é maior que a chave (50), descarta-se todas as posições do meio para a direita e segue para a próxima iteração. 
+
+![Busca binária - 2ª iteração](https://github.com/user-attachments/assets/884619ee-368e-45be-b08b-334d61e518c6)
+
+Como o meio é menor que a chave (50), descarta-se todas as posições do meio para a esquerda e segue para a próxima iteração. As posições que já haviam sido descartadas continuam no mesmo estado.
+
+![Busca binária - 3ª iteração](https://github.com/user-attachments/assets/12e2cddf-17ff-4471-94c9-b15339b1906e)
+
+A variável `meio` aponta para um índice que guarda exatamente a um valor igual à chave. Assim, o algoritmo retorna esse índice (no exemplo é o 2). 
+
+Observa-se que se a chave fosse um valor que não estivesse no vetor, por exemplo 48, a variável `fim` seria atualizada para apontar para o índice `meio - 1`, o seja, `1`, enquanto a variável `início` continuaria a apontar para o índice `2`. Com `fim` menor do que `início`, chega-se à conclusão que a chave não está no vetor. 
+
+
+A listagem abaixo apresenta a implementação da busca binária, escrita em linguagem C.
+
+```c
+int busca_binaria(int v[], int t, int chave){
+    int inicio = 0, fim = t-1, meio;
+
+    while(inicio <= fim){ // O código será executado enquanto inicio e fim não se cruzarem ou enquanto não for encontrado o returno.
+        meio = (inicio + fim) / 2; // Cálculo do meio;
+        if(v[meio] == chave) return meio; // Verificação se o meio aponta para o índice onde está a chave. Se sim, retorna;
+
+        if(v[meio] > chave) fim = meio - 1; // Senão e se o meio aponta para  um índice que tem um número maior que a chave, então a chave está para a esquerda
+        else inicio = meio + 1; // Caso contário, a chave estará para a direita. 
+    }
+    return -1; //-1 indica que a chave não foi encontrada.
+}
+```
+
+A busca binária também pode ser facilmente implementada usado a abordagem recursiva, da seguinte forma: 
+```c
+int busca_binaria_recursiva(int v[], int inicio, int fim, int chave){
+    
+    if(inicio > fim) return -1;
+
+    int meio = (inicio + fim) / 2;
+
+    if(v[meio] == chave) return meio;
+
+    if(v[meio] > chave) return busca_binaria_recursiva(v, inicio, meio - 1, chave);
+
+    return busca_binaria_recursiva(v, meio + 1, fim, chave);
+}
+```
+
+*Desafio:* (i) leia ou gere um vetor de 1000 posições; (ii) ordene esse vetor; (iii) utilize as abordagem de busca sequencial e busca binária, contando quantas iterações são necessárias. Use números distintos, inclusive com valores que não estão no vetor.   
+
+---
+
+>> 📅 Quarta-feira, 09/09/2026 
+
 ## Um Algoritmo de Ordenação sofisticado: Merge Sort
 
 O **Merge Sort** é um algoritmo de ordenação baseado na estratégia **Dividir para Conquistar**. Sua ideia central consiste em dividir o vetor em partes cada vez menores, ordenar essas partes e, em seguida, **intercalar** (*merge*) os subvetores ordenados até reconstruir o vetor final em ordem crescente (ou decrescente, dependendo da aplicação).
