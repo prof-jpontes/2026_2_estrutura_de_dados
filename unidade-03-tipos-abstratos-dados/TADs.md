@@ -134,6 +134,7 @@ Sempre libere memória que não será mais usada e `p` para a apontar para *NULL
 | dar `free()` duas vezes        | erro grave de execução         |
 
 
+>> 📅 Segunda-feira, 21/09/2026
 ### 4. Ponteiros e Arrays
 
 Arrays “decaem” para ponteiro:
@@ -147,7 +148,7 @@ printf("%d\n", *p);
 *p = *p+1; // Incrementa o índice 0 do vetor em 1
 p = p+1; // Faz 'p' apontar para índice 1 do vetor
 *p = *(p+1); // Faz o local para o qual p aponta ter o seu valor atualizado para o valor em que *(p+1) aponta. 
-// Logo, o vetor fica {496, 28, 28}
+// Logo, o vetor fica {497, 28, 28}
 ```
 
 **Leitura de dados armazenamento em memória dinamicamente alocada**
@@ -165,15 +166,13 @@ Sobre o scanf, `p` continuará a apontar para o índice 0. O incremento de `i` q
 
 1. Declare um ponteiro para inteiro e faça-o apontar para uma variável x. Imprima x usando `*p`.
 
-2. Alocar um vetor dinâmico de n inteiros, preencher e imprimir.
+2. Alocar um vetor dinâmico de `n` inteiros, preenchê-lo e, finalmente, imprimi-lo.
 
 3. Reescrever o exercício 2 usando calloc.
 
-4. Redimensionar o vetor usando realloc.
+4. Redimensionar o vetor usando realloc para o tamanho de `n`.
 
 ---
-
->> 📅 Segunda-feira, 21/09/2026 
 
 ## Estruturas (`structs`) em C
 
