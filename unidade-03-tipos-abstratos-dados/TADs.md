@@ -9,6 +9,8 @@ Esta é a unidade temática #3 da disciplina de Estrutura de Dados, ministrada n
 ## 📑 Sumário
 
 - [Ponteiros em C e Alocação de Memória](#ponteiros-em-c-e-alocação-de-memoria)
+- [Estruturas (`structs`) em C](#estruturas-structs-em-c)
+- [Tipos Abstratos de Dados (TADs)](#tipos-abstratos-de-dados-tads)
 
 >> 📅 Quarta-feira, 16/09/2026 
 
@@ -403,11 +405,10 @@ Um TAD tem duas camadas:
 - **Implementação:** mostra como os dados e as operações são realmente realizados.
 
 ### 4. Exemplos clássicos de TAD
-- **Lista:** sequência de elementos acessíveis em posições arbitrárias, com operações como `insererir`, `remover`, `acessar` e `tamanho`;
-- **Fila:** conjunto de dados com acesso FIFO (primeiro a entrar, primeiro a sair) e operações para `adicionar`, `remover` e `verificar se é vazia`;
-- **Pilha:** conjunto de dados com acesso LIFO (último a entrar, primeiro a sair) e operações para `adicionar`, `remover` e `verificar se é vazia`.
+- **Lista:** sequência de elementos acessíveis em posições arbitrárias, com operações como `inserir`, `remover`, `acessar` e `tamanho`;
+- **Fila:** conjunto de dados com acesso FIFO (primeiro a entrar, primeiro a sair) e operações para `inserir`, `remover`, `acessar` e `verificar se é vazia`;
+- **Pilha:** conjunto de dados com acesso LIFO (último a entrar, primeiro a sair) e operações para `inserir`, `remover` e `verificar se é vazia`.
 
 ### 5. Exemplo prático em C: TAD Ponto (x, y)
 - Criar uma `struct` que represente um ponto;
-- Construir um TAD que representa um ponto no plano cartesiano;
-- Usar o TAD.
+- Construir um TAD que representa um ponto no plano cartesiano, tendo como dados as coordenadas `(x, y)`, e as operações para criar ponto, obter `x`do ponto, obter `y`do ponto, calcular a distância entre dois pontos e mover o ponto para uma distância a partir de `x`e `y`.
