@@ -288,6 +288,9 @@ turma[1].cra = 6.1;
  6. Crie uma função que ordene os alunos por ordem alfabética, de A a Z;
  7. Crie um menu que faça o usuário escolher entre uma das opções de 2 a 6.
 
+---
+>> 📅 Quarta-feira-feira, 23/09/2026 
+
 ### 6. `struct` dentro de `struct`
 
 Pode-se aninhar estruturas, criando tipos mais complexos:
@@ -372,7 +375,6 @@ exibir(&a); //Considere `a` uma variável do tipo aluno
 ```
 
 ---
->> 📅 Quarta-feira-feira, 23/09/2026 
 
 ## Tipos Abstratos de Dados (TADs)
 
