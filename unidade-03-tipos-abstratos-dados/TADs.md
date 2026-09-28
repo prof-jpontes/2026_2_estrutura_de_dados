@@ -412,3 +412,162 @@ Um TAD tem duas camadas:
 ### 5. Exemplo prático em C: TAD Ponto (x, y)
 - Criar uma `struct` que represente um ponto;
 - Construir um TAD que representa um ponto no plano cartesiano, tendo como dados as coordenadas `(x, y)`, e as operações para criar ponto, obter `x`do ponto, obter `y`do ponto, calcular a distância entre dois pontos e mover o ponto para uma distância a partir de `x`e `y`.
+
+### 5. Exemplo prático em C: TAD Conta Bancária
+
+
+### 6. Exemplo prático em C: TAD Conta Bancária (com ponteiros)
+Outro exemplo de TAD, que reforça a motivação de **proteger os dados**: um TAD que representa uma conta bancária, tendo como dados `numero` e `saldo`, e as operações para criar a conta, depositar, sacar (com validação de saldo), consultar saldo, imprimir e destruir a conta.
+> Nesta versão, todas as operações recebem `Conta *` (ponteiro para a struct), inclusive as que apenas leem os dados — evitando cópias desnecessárias e mantendo a mesma convenção que será usada em listas, pilhas e filas.
+
+**Sem TAD** — nada impede o acesso indevido:
+- Criar uma `struct`que represente uma conta bancária, com número da conta e saldo;
+- Acesse e manipule diretamente o saldo da conta.
+
+**Interface do TAD Conta**
+
+| Operação         | Assinatura em C                                                           |
+| ----------------- | --------------------------------------------------------------------------- |
+| Criar conta        | `Conta* criarConta(int numero, double saldoInicial)`                        |
+| Depositar          | `void depositar(Conta *c, double valor)`                                    |
+| Sacar               | `int sacar(Conta *c, double valor)` — 0 = sucesso, 1 = saldo insuficiente     |
+| Consultar saldo     | `double consultarSaldo(Conta *c)`                                            |
+| Imprimir conta       | `void imprimirConta(Conta *c)`                                              |
+| Destruir conta       | `void destruirConta(Conta *c)` — libera a memória alocada                     |
+
+**Pratique**
+
+1. Implemente o TAD Conta exatamente como mostrado acima.
+2. Crie a operação `int transferir(Conta *origem, Conta *destino, double valor)`, reaproveitando `sacar` e `depositar`.
+3. Declare um vetor de ponteiros `Conta *banco[5]`, crie 5 contas com `criarConta` e implemente `void imprimirContasComSaldoBaixo(Conta *banco[], int n, double limite)`.
+4. Acrescente o campo `char titular[50]` à struct e ajuste `criarConta` (agora recebendo o nome e usando `strcpy`) e `imprimirConta`.
+5. Implemente `Conta* buscarConta(Conta *banco[], int n, int numero)`, que devolve o ponteiro da conta com o número procurado, ou `NULL` se não existir.
+6. Ao final do programa, percorra o vetor `banco` e chame `destruirConta` para cada conta, evitando *memory leak*.
+
+---
+
+### 7. Encapsulamento real com tipo opaco (`.h` e `.c`)
+
+Até aqui, separar o código em `.h` e `.c` ainda deixava a `struct` visível para quem usa o TAD — bastava incluir o `.h` para acessar `c->saldo` diretamente. É possível impedir esse acesso **em tempo de compilação**, usando um recurso da linguagem C chamado **tipo opaco** (*opaque pointer*).
+
+No `.h`, declara-se apenas que o tipo `Conta` existe, sem dizer do que ele é feito (declaração incompleta). A definição completa da `struct` só aparece dentro do `.c` da implementação, onde ninguém de fora enxerga:
+
+```
+// No .h:
+typedef struct Conta Conta;   // o compilador sabe que Conta existe,
+                               // mas não conhece seus campos nem tamanho
+
+// No .c:
+struct Conta {                // definição completa: só existe aqui
+    int numero;
+    double saldo;
+};
+```
+
+Quem inclui apenas o `.h` só pode ter um ponteiro para `Conta` (`Conta *c`) e chamar as funções da interface — nunca acessar `c->saldo` diretamente, pois o compilador não sabe que esse campo existe.
+
+**`contabancaria.h`**
+
+```
+#ifndef CONTABANCARIA_H
+#define CONTABANCARIA_H
+
+// Tipo opaco: fora deste .h, ninguém sabe o que existe dentro de "struct Conta"
+typedef struct Conta Conta;
+
+Conta* criarConta(int numero, double saldoInicial);
+void depositar(Conta *c, double valor);
+int sacar(Conta *c, double valor);
+double consultarSaldo(Conta *c);
+void imprimirConta(Conta *c);
+void destruirConta(Conta *c);
+
+#endif
+```
+
+> O bloco `#ifndef` / `#define` / `#endif` é o *include guard*: evita que o mesmo `.h` seja processado duas vezes, caso mais de um `.c` o inclua.
+
+**`contabancaria.c`**
+
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include "contabancaria.h"
+
+struct Conta {              // definição completa: só existe aqui
+    int numero;
+    double saldo;
+};
+
+Conta* criarConta(int numero, double saldoInicial) {
+    Conta *c = malloc(sizeof(Conta));
+    c->numero = numero;
+    c->saldo = saldoInicial;
+    return c;
+}
+
+void depositar(Conta *c, double valor) {
+    if (valor > 0) c->saldo = c->saldo + valor;
+}
+
+int sacar(Conta *c, double valor) {
+    if (valor > c->saldo) return 1;
+    c->saldo = c->saldo - valor;
+    return 0;
+}
+
+double consultarSaldo(Conta *c) { return c->saldo; }
+
+void imprimirConta(Conta *c) {
+    printf("Conta %d - Saldo: R$ %.2lf\n", c->numero, c->saldo);
+}
+
+void destruirConta(Conta *c) { free(c); }
+```
+
+**`main.c`**
+
+Não se "importa" o `.c`: inclui-se apenas o `.h`, com aspas (indicando arquivo do projeto, não biblioteca padrão):
+
+```
+#include <stdio.h>
+#include "contabancaria.h"
+
+int main() {
+    Conta *minhaConta = criarConta(1, 1000.0);
+
+    depositar(minhaConta, 500.0);
+    imprimirConta(minhaConta);
+
+    // minhaConta->saldo = -999999;  <- NÃO COMPILA MAIS! Esse é o objetivo.
+
+    if (sacar(minhaConta, 5000.0) == 1) {
+        printf("Saque recusado: saldo insuficiente.\n");
+    }
+
+    destruirConta(minhaConta);
+    return 0;
+}
+```
+
+**Compilando com múltiplos arquivos**
+
+O `.h` só entrega as assinaturas; quem entra de fato na montagem do executável é o `contabancaria.c`. Por isso os dois `.c` vão juntos no comando do `gcc`:
+
+```
+gcc main.c contabancaria.c -o programa
+./programa
+```
+
+**Demonstração em aula: forçando o erro**
+
+Para a turma sentir a proteção na prática, remova o comentário da linha `minhaConta->saldo = -999999;` no `main.c` e tente compilar novamente. O compilador recusa:
+
+```
+main.c: In function 'main':
+main.c:8:15: error: invalid use of incomplete typedef 'Conta'
+    8 |     minhaConta->saldo = -999999;
+      |               ^~
+```
+
+> Sem tipo opaco, a proteção do saldo dependia só de `sacar()` ser "bem-comportado" — uma convenção. Com tipo opaco, é o próprio compilador que impede o acesso indevido. Essa é a forma como C se aproxima do encapsulamento que outras linguagens (Java, C++) oferecem nativamente com `private`.
