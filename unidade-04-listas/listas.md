@@ -10,9 +10,10 @@ Para se aprofundar neste roteiro, acesse o livro **Estruturas de dados**: algori
 
 ## 📑 Sumário
 
-- [O que são listas](#o-que-são-listas)
+- [Listas](#listas)
+- 
 
->> 📅 Sexta-feira, 14/11/2025 
+>> 📅 Segunda-feira, 5/10/2026 
 
 ## Listas
 ### O que são listas
@@ -24,11 +25,11 @@ Listas são estruturas de dados fundamentais que representam coleções de eleme
 
 Uma lista estática implementada por meio de um vetor ocupa uma tamanho `x` na memória, independente da quantidade de elementos que efetivamente ela tem. Ademais, a quantidade de elementos na lista não pode exceder o tamanho previamente definido para o vetor. A figura abaixo mostra dois exemplos de listas implementadas via vetor. A primeira, que é uma lista estática de dados homogêneos, tem cinco números inteiros e pode armazenar, no máximo oito. A segunda — que uma lista estática de dados heterogêneos, guarda três `structs` que contém um texto e um inteiro; ela pode armazenar, no máximo oito. Independentemente da quantidade de elementos guardado na lista, o espaço de memória reservado para cada lista é `8 vezes a quantidade de memória necessária para armazenar um elemento`. 
 
-![Listas armazenadas em vetores](https://github.com/user-attachments/assets/cee9d772-4fb0-47b1-bac8-79f79ffa9e1e)
+![Listas armazenadas em vetores](https://github.com/user-attachments/assets/c0169ab8-147b-4afc-a531-af725b1350aa)
 
 Por outro lado, uma lista implementada dinamicamente ocupa na memória o espaço mínimo suficiente para guardar a quantidade de elementos que estão na lista em um determinado espaço de tempo. Na figura abaixo, há duas listas implementadas de maneira dinâmica, um com dados homogêneos e outr acom dados heterogêneos. A primeira guarda números inteiros, ao passo que a segunda armazena `structs` com texto e número. Nesse tipo de lista, cada nó guarda um valor (número na primeira lista e `struct` na segunda) e um ponteiro para o próximo nó. O último nó tem um ponteiro que aponta para `NULL`.
 
-![Listas armazenadas dinamicamente](https://github.com/user-attachments/assets/79e96d59-1f03-4f56-84a8-a2e8eb0ee19d)
+![Listas armazenadas dinamicamente](https://github.com/user-attachments/assets/9a2192b1-28a5-4bcb-bac0-f9e194ae91bd)
 
 > Nesta unidade, atentar-nos-emos apenas a listas dinâmicas.
 
@@ -42,7 +43,7 @@ Por outro lado, uma lista implementada dinamicamente ocupa na memória o espaço
 
 Por exemplo, para inserir um elemento de valor 30 na lista dinâmica homogênea da figura acima, entre o 2 e o 14, basta fazer o ponteiro do nó que contém o elemento 2 apontar para o novo nó com o valor 30 e fazer o ponteiro do nó que tem o valor 30 para o nó que tem o valor 14, assim: 
 
-![Inserção em lista dinâmica](https://github.com/user-attachments/assets/fa561693-afa0-4dae-8a24-8f0f43facd7c)
+![Inserção em lista dinâmica](https://github.com/user-attachments/assets/dbbb94b5-3dd4-4617-a1fb-d70182c3cb93)
 
 **2. Desvantagens:**
 
@@ -77,7 +78,7 @@ typedef struct{
 }No;
 ```
 
->> 📅 Quarta-feira, 19/11/2025 
+>> 📅 Quarta-feira, 7/10/2026  
 
 ## Listas simplesmente encadeadas
 
@@ -97,7 +98,7 @@ Em uma lista simplesmente encadeada, cada nó guarda um elemento (no exemplo, um
 
 Uma lista com os elementos 6 → 2 → 14 → 17 → 17 é representada assim:
 
-![Lista simplesmente encadeada](https://github.com/user-attachments/assets/79e96d59-1f03-4f56-84a8-a2e8eb0ee19d)
+![Lista simplesmente encadeada](https://github.com/user-attachments/assets/a2d76d03-91cf-4da4-ab99-fd2e6a10dc3b)
 
 O ponteiro inicial da lista, que podemos chamar de `raiz`, aponta para o primeiro nó.
 
@@ -152,7 +153,7 @@ typedef struct No {
 
 A lista com os elementos 6 ⇄ 2 ⇄ 14 ⇄ 17 ⇄ 17 é representada assim:
 
-![Lista duplamente encadeada](https://github.com/user-attachments/assets/13473afd-ff18-4c92-882c-56ad98a7e24f)
+![Lista duplamente encadeada](https://github.com/user-attachments/assets/ec8e9fd7-a6d5-4d8c-969d-d949e105d4f3)
 
 O início aponta para o primeiro nó. O primeiro tem `ant` igual a `NULL`. Jáo último tem `prox` igual a `NULL`.
 
