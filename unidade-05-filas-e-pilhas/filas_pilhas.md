@@ -318,25 +318,17 @@ Apos limpar:
    > *Dica:* o início do atendimento de um cliente é o maior valor entre a sua chegada e o fim do atendimento do cliente anterior.
 
 **4. Fila de impressão.** Cada documento tem `nome` e `paginas`. A impressora leva 2 segundos por página. Enfileire vários documentos, processe a fila e, a cada documento, mostre o instante em que ele terminou de ser impresso (*"relatorio.pdf: 12 páginas, concluído em 24 s"*). Ao final, informe o tempo total.
-   - **Extensão:** permita **cancelar** um documento pelo nome antes de a impressão começar. Isso exige remover um nó do meio da fila. Discuta: ainda estamos respeitando o conceito de fila?
 
 **5. Batata quente.** Um grupo de pessoas forma uma roda e passa uma "batata" de mão em mão. Simule isso com uma fila: a cada rodada, faça `k` passes (desenfileire a pessoa da frente e a enfileire de volta no fim); depois, a pessoa que estiver na frente é **eliminada** (desenfileirada e não volta). Repita até sobrar um só participante.
 
    *Teste:* `Ana, Bia, Caio, Duda, Edu`, com `k = 3`.
    Ordem de eliminação esperada: **Duda, Caio, Edu, Bia**. Vencedora: **Ana**.
 
-   > Esse exercício é uma variação do Problema de Josefo, visto em listas circulares. Compare as duas soluções: qual é mais simples de escrever?
-
-**6. Escalonador round-robin com fila.** Cada processo tem `pid` e `tempoRestante`. O processador executa o processo da frente por, no máximo, um *quantum* de 3 unidades. Se o processo não terminou, ele volta ao fim da fila; se terminou, sai e o instante de término é registrado.
-
-   *Teste:* `P1(5)`, `P2(2)`, `P3(7)`, quantum = 3.
-   Término esperado: **P2 em t = 5**, **P1 em t = 10** e **P3 em t = 14**.
-
-**7. Atendimento preferencial.** Usando a `struct Pessoa` do exemplo, altere `enfileirar` para que pessoas com **60 anos ou mais** entrem na fila logo depois do último preferencial que já está nela, e antes de todos os demais (os demais continuam entrando no fim). Insira `Ana (25)`, `Bruno (70)`, `Carla (40)`, `Dora (65)` e imprima a fila.
+**6. Atendimento preferencial.** Usando a `struct Pessoa` do exemplo, altere `enfileirar` para que pessoas com **60 anos ou mais** entrem na fila logo depois do último preferencial que já está nela, e antes de todos os demais (os demais continuam entrando no fim). Insira `Ana (25)`, `Bruno (70)`, `Carla (40)`, `Dora (65)` e imprima a fila.
    - Resultado esperado: `Bruno -> Dora -> Ana -> Carla`.
    - Discuta: essa estrutura ainda é FIFO? (Pesquise o conceito de **fila de prioridade**.)
 
-#### 🔴 Desafio
+#### 🔴 Desafio (fazer após estudar pilhas, na próxima seção)
 
 **8. Inverter uma fila.** Use uma pilha auxiliar (veja a próxima seção) para inverter a ordem dos elementos de uma fila.
 
