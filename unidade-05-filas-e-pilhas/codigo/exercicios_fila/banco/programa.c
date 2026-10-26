@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "impressao.h"
+#include "gerador_senha.h"
 
 void menu(){
     printf("-------------------------------------------\n");

@@ -48,4 +48,5 @@ void processar_impressoes(Fila *f){
     while(f->inicio != NULL){
         imprimir(f);
     }
+    f->tempo = 0;
 }
