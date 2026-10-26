@@ -330,7 +330,7 @@ Apos limpar:
 
 #### 🔴 Desafio (fazer após estudar pilhas, na próxima seção)
 
-**8. Inverter uma fila.** Use uma pilha auxiliar (veja a próxima seção) para inverter a ordem dos elementos de uma fila.
+**7. Inverter uma fila.** Use uma pilha auxiliar (veja a próxima seção) para inverter a ordem dos elementos de uma fila.
 
 **9. Fila com duas pilhas.** Implemente `enfileirar` e `desenfileirar` usando **apenas duas pilhas** (sem usar nenhuma lista ou vetor diretamente). Qual é o custo no pior caso de cada operação?
 
