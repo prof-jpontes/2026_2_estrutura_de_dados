@@ -23,7 +23,9 @@ Livro criar_livro(char titulo[], char autor[], int ano);
 
 void empilhar(Pilha* pilha, Livro l);
 
-void desempilhar(Pilha* pilha);
+int desempilhar(Pilha* pilha, Livro* leitura);
+
+void remover(Pilha* pilha);
 
 Livro topo(Pilha* pilha);
 
