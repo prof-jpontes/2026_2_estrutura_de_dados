@@ -16,6 +16,8 @@ No* inserir_no(No* atual, int valor);
 
 void imprimir(No* atual);
 
+void imprimir_formatada(No* atual, int profundidade);
+
 int buscar(No* atual, int valor);
 
 No* menor_no(No* atual);
