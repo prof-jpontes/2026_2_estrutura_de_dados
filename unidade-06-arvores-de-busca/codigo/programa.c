@@ -5,7 +5,9 @@ void menu(){
     printf("\nESCOLHA UMA OPCAO:\n");
     printf("1.Inserir um no.\n");
     printf("2.Imprimir arvore.\n");
-    printf("3.Sair do sistema.\n");
+    printf("3.Buscar valor\n");
+    printf("4.Mostrar o Menor\n");
+    printf("0.Sair do sistema.\n");
 }
 
 No* processar(No* raiz, int opcao){
@@ -18,10 +20,26 @@ No* processar(No* raiz, int opcao){
         break;
 
     case 2:
+        printf("\n==================================\n");
         imprimir_formatada(raiz, 0);
+        printf("\n==================================\n");
         break;
-    
-    default:
+    case 3:
+        printf("Valor: ");
+        scanf("%d", &valor);
+        if(buscar(raiz, valor)){
+            printf("O valor %d existe na arvore\n", valor);
+            
+        }else{
+            printf("O valor %d nao esta na arvore\n", valor);
+        }
+        break;
+
+    case 4:
+        printf("Menor: %d\n", menor_no(raiz)->valor);
+        break;
+
+        default:
         printf("Voce escolheu a opcao errada.");
         break;
     }
@@ -36,7 +54,7 @@ int main(){
 
     menu();
     scanf("%d", &op);
-    while (op != 3){
+    while (op != 0){
         raiz = processar(raiz, op);
         menu();
         scanf("%d", &op);
@@ -45,6 +63,8 @@ int main(){
     
 
     imprimir(raiz);
+
+
 
     return 0;
 }
