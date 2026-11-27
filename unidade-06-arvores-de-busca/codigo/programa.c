@@ -7,6 +7,7 @@ void menu(){
     printf("2.Imprimir arvore.\n");
     printf("3.Buscar valor\n");
     printf("4.Mostrar o Menor\n");
+    printf("5.Excluir um No\n");
     printf("0.Sair do sistema.\n");
 }
 
@@ -37,6 +38,14 @@ No* processar(No* raiz, int opcao){
 
     case 4:
         printf("Menor: %d\n", menor_no(raiz)->valor);
+        break;
+
+    case 5:
+        printf("Digite um valor: ");
+        scanf("%d", &valor);
+        raiz = remover_no(raiz, valor);
+        printf("Arvore resultante: \n");
+        imprimir_formatada(raiz, 0);
         break;
 
         default:

@@ -74,10 +74,10 @@ No* menor_no(No* atual){
 No* remover_no(No* atual, int valor){
     if(atual == NULL) return NULL;  //Arvore vazia
     if(valor < atual->valor){ 
-        return remover_no(atual->esq, valor);
+        atual->esq = remover_no(atual->esq, valor);
     }
     if(valor > atual->valor){ 
-        return remover_no(atual->dir, valor);
+        atual->dir = remover_no(atual->dir, valor);
     }
     //O No do valor foi encontrado
     if(atual->esq == NULL && atual->dir == NULL){
@@ -99,6 +99,4 @@ No* remover_no(No* atual, int valor){
         atual->dir = remover_no(atual->dir, aux->valor);
     }
     return atual;
-    
-    
 }
